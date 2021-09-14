@@ -6,7 +6,6 @@ RSpec.describe 'Welcome page' do
   end
   it 'is on the right page' do 
     
-
     expect(current_path).to eq(root_path)
   end 
 end
