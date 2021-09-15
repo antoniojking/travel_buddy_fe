@@ -15,14 +15,14 @@ RSpec.describe 'Trips dashboard page' do
 
       it 'displays trip attributes' do
         expect(current_path).to eq('/trip_dashboard')
-        expect(page).to have_content("Trip Name")
-        expect(page).to have_content("National Park Name")
-        expect(page).to have_content("Travel Dates")
+        expect(page).to have_content('Trip Name')
+        expect(page).to have_content('National Park Name')
+        expect(page).to have_content('Travel Dates')
       end
 
       it 'displays a weather forecast section' do
         within "#weather" do
-          expect(page).to have_content("Weather Forecast")
+          expect(page).to have_content('Weather Forecast')
           # expect(page).to have_content()
           # expect(page).to have_field()
           # expect(page).to have_button()
@@ -31,34 +31,34 @@ RSpec.describe 'Trips dashboard page' do
 
       it 'displays an accommodations section' do
         within "#accommodations" do
-          expect(page).to have_content("Accommodations")
+          expect(page).to have_content('Accommodations')
           # expect(page).to have_content()
           # expect(page).to have_field()
-          # expect(page).to have_button()
+          expect(page).to have_button('Edit')
         end
       end
 
       it 'displays an activities section' do
         within "#activities" do
-          expect(page).to have_content("Activities")
+          expect(page).to have_content('Activities')
           # expect(page).to have_content()
           # expect(page).to have_field()
-          # expect(page).to have_button()
+          expect(page).to have_button('Edit')
         end
       end
 
       it 'displays a trip checklists section' do
         within "#checklists" do
-          expect(page).to have_content("Trip Checklist(s)")
+          expect(page).to have_content('Trip Checklist(s)')
           # expect(page).to have_content()
-          # expect(page).to have_field()
-          # expect(page).to have_button()
+          expect(page).to have_field(:name)
+          expect(page).to have_button('Create Checklist')
         end
       end
 
       it 'displays a chat section' do
         within "#chat" do
-          expect(page).to have_content("Message Board/Chat")
+          expect(page).to have_content('Message Board/Chat')
           # expect(page).to have_content()
           # expect(page).to have_field()
           # expect(page).to have_button()
@@ -67,7 +67,7 @@ RSpec.describe 'Trips dashboard page' do
 
       it 'displays a friends joining section' do
         within "#friends_joining" do
-          expect(page).to have_content("Friends Joining")
+          expect(page).to have_content('Friends Joining')
           # expect(page).to have_content()
           # expect(page).to have_field()
           # expect(page).to have_button()

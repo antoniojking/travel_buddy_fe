@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   get '/user_dashboard', to: 'users#show'
+
+  get '/trip_dashboard', to: 'trips#show'
 end
