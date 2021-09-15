@@ -13,8 +13,7 @@ RSpec.describe 'User dashboard page' do
     describe 'when I visit the "/user_dashboard" path' do
       before { visit '/user_dashboard' }
 
-      it 'displays welcome message and section headers' do
-        save_and_open_page
+      it 'displays welcome message' do
         expect(current_path).to eq('/user_dashboard')
         expect(page).to have_content("Welcome User!")
       end
