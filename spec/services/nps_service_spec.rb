@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe NationalParkService do
   context "class methods" do
-    context ".some_api_endpoint_feature" do
+    context ".all_parks" do
       it "returns list of all parks" do
         parks = NationalParkService.all_parks
         expect(parks).to be_a Hash
@@ -28,8 +28,8 @@ describe NationalParkService do
       it "establishes connection with api service" do
         conn = NationalParkService.conn
         expect(conn).to be_a Faraday::Connection
-        expect(conn.params.keys).to include('api_key')
-        expect(conn.params['api_key']).to eq(ENV['nps_api_key'])
+        expect(conn.headers.keys).to include('X-Api-Key')
+        expect(conn.headers['X-Api-Key']).to eq(ENV['nps_api_key'])
       end
     end
   end
