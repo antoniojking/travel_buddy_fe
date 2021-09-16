@@ -1,0 +1,11 @@
+<h1 style="text-align:center;">NP Explore Page</h1>
+
+<h1 style="text-align:center;">Popular Parks Place Holder</h1>
+
+<div align="center" class="mb-3">
+  <% if params[:sort].nil? %>
+    <%= render 'search_state' %>
+  <br>
+    <%= render 'search_activity' %>
+  <% end %>
+</div>
