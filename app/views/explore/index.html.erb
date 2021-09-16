@@ -1,11 +1,23 @@
 <h1 style="text-align:center;">NP Explore Page</h1>
 
 <h1 style="text-align:center;">Popular Parks Place Holder</h1>
+<br>
+
+<p style="text-align:center; color:red;">option2</p>
 
 <div align="center" class="mb-3">
   <% if params[:sort].nil? %>
     <%= render 'search_state' %>
   <br>
     <%= render 'search_activity' %>
+  <% end %>
+</div>
+
+<br> 
+<div align="center" class="mb-3">
+  <p style="text-align:center; color:red;">option2</p>
+  <%= render 'search_activity_and_state' %>
+  <% if params[:activity] && params[:state] %>
+    <h3>Searching in: <%= @state %>, with activity <%= @activity %></h3> 
   <% end %>
 </div>

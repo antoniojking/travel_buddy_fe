@@ -25,4 +25,13 @@ RSpec.describe 'Explore Page' do
     click_on 'Search' 
     expect(current_path).to eq(explore_index_path)
   end
+
+  it 'can add multiple params to url' do
+    fill_in :activity, with: "Hiking"
+    fill_in :state, with: "Colorado"
+
+    click_on 'Filter Results' 
+    expect(current_path).to eq(explore_index_path)
+    expect(page).to have_content("Searching in: CO, with activity Hiking")
+  end
 end

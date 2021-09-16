@@ -1,5 +1,7 @@
 class ExploreController < ApplicationController 
-  def index; end
-  
+  def index
+    @state    = params[:state]
+    @activity = params[:activity]
+  end
   def show; end
 end 

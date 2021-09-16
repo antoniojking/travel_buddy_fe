@@ -1,0 +1,6 @@
+ <%= form_tag explore_index_path, method: "get", sort: "state" do %>
+    <%= select_tag(:state, options_for_select(DropdownSelections.states), {class: "select-field"}) %>
+    <%= select_tag(:activity, options_for_select(DropdownSelections.activity), {class: "select-field"}) %>
+    <br>
+    <%= submit_tag('Filter Results', class: "button") %>
+  <% end %>
