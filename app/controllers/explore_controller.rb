@@ -3,8 +3,8 @@ class ExploreController < ApplicationController
     @state    = params[:state]
     @activity = params[:activity]
 
-    @parks = NationalParkFacade.new.parks_by_state(params[:state])
+    # @parks = NationalParkFacade.parks_by_state(params[:state])
   end
-  
+
   def show; end
 end 
