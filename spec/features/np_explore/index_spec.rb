@@ -4,11 +4,11 @@ RSpec.describe 'Explore Page' do
   before :each do 
     visit explore_index_path
   end
+
   it 'is on the right page' do 
-    
     expect(current_path).to eq(explore_index_path)
   end 
-
+# testing option 1( filter by state or activity)
   it 'has a drop down menu' do 
     within "#option1" do
       select "Colorado", :from => "state"
@@ -29,7 +29,7 @@ RSpec.describe 'Explore Page' do
     end
    
   end
-
+# testing option 2(using multiple params)
   it 'can add multiple params to url' do
     within "#option2" do 
       select "Colorado", :from => "state"
