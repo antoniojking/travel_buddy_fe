@@ -1,0 +1,38 @@
+<h1>Trip Name</h1>
+
+<h3>National Park Name</h3>
+<h3>Travel Dates</h3>
+
+<div id="weather">
+  <h2>Weather Forecast</h2>
+</div>
+
+<div id="accommodations">
+  <h2>Accommodations</h2>
+  <p><%= button_to 'Edit', '#' %></p>
+</div>
+
+<div id="activities">
+  <h2>Activities</h2>
+  <p><%= button_to 'Edit', '#' %></p>
+</div>
+
+<div id="checklists">
+  <h2>Trip Checklist(s)</h2>
+
+  <%= form_with url: "#", method: :post, local: true do |f| %>
+    <%= f.label :name, "New Checklist Name:" %>
+    <%= f.text_field :name %>
+
+    <%= f.submit "Create Checklist" %>
+  <% end %>
+
+</div>
+
+<div id="chat">
+  <h2>Message Board/Chat</h2>
+</div>
+
+<div id="friends_joining">
+  <h2>Friends Joining</h2>
+</div>
