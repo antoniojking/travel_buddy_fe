@@ -4,9 +4,9 @@ class ParkByState
               :description,
               :url
   def initialize(data)
-    @name           = [:fullname]
-    @parkcode       = [:parkcode]
-    @description    = [:description]
-    @url            = [:url]
+    @name           = data[:fullname]
+    @parkcode       = data[:parkcode]
+    @description    = data[:description]
+    @url            = data[:url]
   end 
 end 

@@ -4,9 +4,9 @@ class ParkByActivity
               :states,
               :url
   def initialize(data)
-    @name           = [:fullname]
-    @parkcode       = [:parkCode]
-    @states         = [:states]
-    @url            = [:url]
+    @name           = data[:fullname]
+    @parkcode       = data[:parkCode]
+    @states         = data[:states]
+    @url            = data[:url]
   end 
 end 
