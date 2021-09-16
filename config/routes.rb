@@ -3,11 +3,9 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
-
-  resources :explore, only: [:index, :show]
+  resources 'explore', only: [:index, :show]
 
   get '/user_dashboard', to: 'users#show'
 
   get '/trip_dashboard', to: 'trips#show'
-
 end

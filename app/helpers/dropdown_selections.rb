@@ -4,7 +4,7 @@ module DropdownSelections
       CS.states(:us).invert
     end
 
-    def activities 
+    def activity
       [
         "Arts and Culture",
         "Astronomy",
@@ -47,7 +47,6 @@ module DropdownSelections
         "Water Skiing",
         "Wildlife Watching"
       ]
-  end
-
-  
+    end 
+  end 
 end 

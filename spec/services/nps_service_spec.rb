@@ -24,6 +24,49 @@ describe NationalParkService do
       end
     end
 
+    context ".parks_by_state" do
+      it "returns list of all parks in a state" do
+        parks = NationalParkService.parks_by_state("CO")
+        expect(parks).to be_a Hash
+        expect(parks[:data]).to be_an Array
+        expect(parks[:data].size).to eq(16)
+
+        park_data = parks[:data].first
+        expect(park_data).to have_key :id
+        expect(park_data[:id]).to be_an(String)
+
+        expect(park_data).to have_key :url
+        expect(park_data[:url]).to be_an(String)
+
+        expect(park_data).to have_key :fullName
+        expect(park_data[:fullName]).to be_a(String)
+
+        expect(park_data).to have_key :description 
+        expect(park_data[:images]).to be_an(String)
+      end
+    end
+
+    context ".parks_by_activity" do
+      it "returns list of all parks eith specified activity" do
+        parks = NationalParkService.parks_by_activity("dog sledding")
+        expect(parks).to be_a Hash
+        expect(parks[:data]).to be_an Array
+        expect(parks[:data].size).to eq(1)
+        expect(parks[:data][:parks]).to be_an Array
+        expect(parks[:data][:parks]).to eq(4)
+
+        park_data = parks[:data][:parks].first
+        expect(park_data).to have_key :states
+        expect(park_data[:id]).to be_an(String)
+
+        expect(park_data).to have_key :parkCode
+        expect(park_data[:url]).to be_an(String)
+
+        expect(park_data).to have_key :fullname
+        expect(park_data[:fullName]).to be_a(String)
+      end
+    end
+
     context ".conn" do
       it "establishes connection with api service" do
         conn = NationalParkService.conn
