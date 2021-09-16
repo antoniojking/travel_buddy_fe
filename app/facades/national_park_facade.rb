@@ -15,5 +15,14 @@ class NationalParkFacade
         Park.new(park)
       end
     end
+
+    def parks_by_state(activity)
+      json = NationalParkService.parks_by_activity(activity)
+
+      json[:data][:parks].map do |park|
+        Park.new(park)
+      end
+    end
+
   end 
 end

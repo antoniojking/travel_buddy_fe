@@ -12,8 +12,8 @@ class NationalParkService
       body = JSON.parse(response.body, symbolize_names: true)
     end
 
-    def park_activities
-      response = conn.get('/v1/activities/parks?')
+    def parks_by_activity(activity)
+      response = conn.get("/v1/activities/parks?q=#{activity}")
 
       body = JSON.parse(response.body, symbolize_names: true)
     end
