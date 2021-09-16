@@ -1,0 +1,8 @@
+   <%= form_tag explore_index_path, method: "get", sort: "activity" do %>
+      <br>
+        <%= label_tag :activity, 'Search By Activity'%>
+      <br>
+        <%= text_field_tag :activity %>
+      <br>
+        <%= submit_tag 'Search', class:"btn btn-outline-dark navbar-custom black_text" %>
+    <% end %>
