@@ -10,8 +10,5 @@ RSpec.describe Park do
     expect(park.fullName).to eq(attrs[:fullName])
     expect(park.url).to eq(attrs[:url])
     expect(park.description).to eq(attrs[:description])
-    expect(park.images).to eq(attrs[:images])
-
-    expect(park.images).to be_an Array
   end
 end
