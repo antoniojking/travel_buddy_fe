@@ -10,7 +10,7 @@
 # Welcome to Travel Buddy
   - The frustrating part about planning a trip with friends is keeping track of all the details. Wouldn’t it be easier if all the details were in one place for all to see? Travel Buddies makes it easy to organize a trip while keeping everyone involved on the same page.
 <p align="center">
-  <img src="place holder"/>
+  [![Screen-Shot-2021-09-17-at-5-08-25-PM.png](https://i.postimg.cc/T1gL2X6N/Screen-Shot-2021-09-17-at-5-08-25-PM.png)](https://postimg.cc/9wXF1Kzy)
 </p>
 
 <p align="center">
