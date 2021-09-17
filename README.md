@@ -102,7 +102,7 @@
 [forks-url]: https://github.com/antoniojking/travel_buddy_fe/network/members
 [stars-shield]: https://img.shields.io/github/stars/antoniojking/travel_buddy_fe.svg?style=flat-square
 [stars-url]: https://github.comantoniojking/travel_buddy_fe/stargazers
-[issues-shield]: https://img.shields.io/github/issuesantoniojking/travel_buddy_fe.svg?style=flat-square
+[issues-shield]: https://img.shields.io/github/issues/antoniojking/travel_buddy_fe.svg?style=flat-square
 [issues-url]: https://github.com/antoniojking/travel_buddy_fe/issues
 <!--
 
