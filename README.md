@@ -1,7 +1,7 @@
 [![untitled.png](https://i.postimg.cc/t46wNSzd/untitled.png)](https://postimg.cc/k2nTnyzD)
 ## Travel Buddy -(front end)
 
-[Heroku](https://travel-buddy-turing.herokuapp.com/)
+[Deployed to Heroku](https://travel-buddy-turing.herokuapp.com/)
 
 [![Contributors][contributors-shield]][contributors-url]
 [![Issues][issues-shield]][issues-url]
@@ -96,14 +96,14 @@
 
 <!-- MARKDOWN LINKS & IMAGES -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/bfl3tch/little-esty-shop.svg?style=flat-square
-[contributors-url]: https://github.com/bfl3tch/little-esty-shop/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/bfl3tch/little-esty-shop.svg?style=flat-square
-[forks-url]: https://github.com/bfl3tch/little-esty-shop/network/members
-[stars-shield]: https://img.shields.io/github/stars/bfl3tch/little-esty-shop.svg?style=flat-square
-[stars-url]: https://github.com/bfl3tch/little-esty-shop/stargazers
-[issues-shield]: https://img.shields.io/github/issues/bfl3tch/little-esty-shop.svg?style=flat-square
-[issues-url]: https://github.com/bfl3tch/little-esty-shop/issues
+[contributors-shield]: https://img.shields.io/github/contributors/antoniojking/travel_buddy_fe.svg?style=flat-square
+[contributors-url]: https://github.com/antoniojking/travel_buddy_fe/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/antoniojking/travel_buddy_fe.svg?style=flat-square
+[forks-url]: https://github.com/antoniojking/travel_buddy_fe/network/members
+[stars-shield]: https://img.shields.io/github/stars/antoniojking/travel_buddy_fe.svg?style=flat-square
+[stars-url]: https://github.comantoniojking/travel_buddy_fe/stargazers
+[issues-shield]: https://img.shields.io/github/issuesantoniojking/travel_buddy_fe.svg?style=flat-square
+[issues-url]: https://github.com/antoniojking/travel_buddy_fe/issues
 <!--
 
 
