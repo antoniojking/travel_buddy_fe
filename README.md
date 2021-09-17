@@ -23,6 +23,8 @@
 
 - [Overview](#overview)
 - [Tools Utilized](#tools-used)
+- [Pages](#pages)
+    - [Login Page](#login-page)
 - [Contributing](#contributors)
 
 # README
@@ -30,7 +32,7 @@
 
 ### <ins>Overview</ins>
 
-[Travel Buddy](https://github.com/antoniojking/travel_buddy_fe) is a 10 day, 6 person project. 
+[Travel Buddy](https://github.com/antoniojking/travel_buddy_fe) is a 10 day, 6 person project. The idea was to build a web application that allows users to connect and plan trips to national parks. 
 
 - Apply principles of flow control across multiple methods
 - Design a one to many relationship using an API backend application
@@ -64,6 +66,12 @@
 - Travis CI
 - API
 - RuboCop
+
+### Pages 
+
+#### Login
+- Implement Spotify Oauth for users to login and store their data
+
 
 ### <ins>Contributors</ins>
 
