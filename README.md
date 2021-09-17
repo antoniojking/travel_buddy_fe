@@ -14,7 +14,7 @@
 </p>
 
 <p align="center">
-  <img src="Place Holder"/>
+  <img src="https://i.postimg.cc/T1gL2X6N/Screen-Shot-2021-09-17-at-5-08-25-PM.png)](https://postimg.cc/9wXF1Kzy"/>
 </p>
 
 <!-- ![Relational Rails Welcome Screen](https://user-images.githubusercontent.com/74567704/124805908-1e01ff80-df2a-11eb-92bc-3a1536aa9c84.png) -->
