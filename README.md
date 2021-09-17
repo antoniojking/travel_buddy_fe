@@ -24,7 +24,7 @@
 - [Overview](#overview)
 - [Tools Utilized](#tools-used)
 - [Pages](#pages)
-    - [Login Page](#login-page)
+    - [Login Page](#login)
 - [Contributing](#contributors)
 
 # README
