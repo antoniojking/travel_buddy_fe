@@ -67,7 +67,7 @@
 - API
 - RuboCop
 
-### Pages 
+### <ins>Pages</ins>
 
 #### Login
 - Implement Spotify Oauth for users to login and store their data
