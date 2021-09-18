@@ -5,9 +5,7 @@ class SessionsController < ApplicationController
     email = auth_hash['info']['email']
     token = auth_hash['credentials']['token']
     refresh_token = auth_hash['credentials']['refresh_token']
-
-    user = UserService.get_user_info(spotify_id, email, token, refresh_token)
-    # call Facade (service -> poro -> facade)
+    user = UserFacade.create_user(spotify_id, email, token, refresh_token)
 
     session[:user_id] = user.id
 
