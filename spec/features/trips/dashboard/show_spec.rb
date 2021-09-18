@@ -10,11 +10,11 @@ RSpec.describe 'Trips dashboard page' do
     #   allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     # end
 
-    describe 'when I visit the "/trip_dashboard" path' do
-      before { visit '/trip_dashboard' }
+    describe "when I visit a trip's dashboard" do
+      # before { visit trips_dashboard_path(17) }
 
-      it 'displays trip attributes' do
-        expect(current_path).to eq('/trip_dashboard')
+      xit 'displays trip attributes' do
+        expect(current_path).to eq(trips_dashboard_path(17))
         expect(page).to have_content('Trip Name')
         expect(page).to have_content('National Park Name')
         expect(page).to have_content('Travel Dates')
@@ -22,7 +22,7 @@ RSpec.describe 'Trips dashboard page' do
 
       describe 'Weather' do
         #call on weather api facade
-        it 'displays a weather forecast section' do
+        xit 'displays a weather forecast section' do
           within "#weather" do
             expect(page).to have_content('Weather Forecast')
             # expect(page).to have_content()
@@ -33,7 +33,7 @@ RSpec.describe 'Trips dashboard page' do
       end
 
       describe 'Accommodations' do
-        it 'displays an accommodations section' do
+        xit 'displays an accommodations section' do
           within "#accommodations" do
             expect(page).to have_content('Accommodations')
             # expect(page).to have_content()
@@ -47,7 +47,7 @@ RSpec.describe 'Trips dashboard page' do
       end
 
       describe 'Activites' do
-        it 'displays an activities section' do
+        xit 'displays an activities section' do
           within "#activities" do
             expect(page).to have_content('Activities')
             # expect(page).to have_content()
@@ -61,20 +61,27 @@ RSpec.describe 'Trips dashboard page' do
       end
 
       describe 'Trip Checklists' do
-        # trip1 = Trip.create(name: 'Rocky Mountain NP')
-        checklist1 = 'Camping Supplies'
-        checklist2 = 'Snacks'
-        # checklist1 = trip1.checklists.create(name: checklist1)
+        before :each do
+          json_response = File.read('spec/fixtures/checklist_by_trip.json')
+          stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/trips/17/checklists").
+          with(
+           headers: {
+            'Accept'=>'*/*',
+            'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+            'User-Agent'=>'Faraday v1.7.2'
+            }).
+          to_return(status: 200, body: json_response)
+
+          visit trips_dashboard_path(17)
+        end
 
         it 'displays a trip checklists section' do
           within "#checklists" do
             expect(page).to have_content('Trip Checklist(s)')
-            expect(page).to have_link(checklist1)
-            expect(page).to have_link(checklist2)
-
-            # trip1.checklists.each do |checklist|
-            #   expect(page).to have_link(checklist)
-            # end
+              within "#checklist-1" do
+                expect(page).to have_link('Blue Plate Grill')
+                expect(page).to have_content('Blue Plate Grill | item count: 0')
+              end
           end
         end
 
@@ -87,29 +94,55 @@ RSpec.describe 'Trips dashboard page' do
 
         context 'when I fill in the checklist name field and click on the create checklist button' do
           it 'adds the created checklist to the list as a link' do
-            checklist3 = 'Personal Luggage'
+            json_response_new = File.read('spec/fixtures/checklist_create.json')
+            stub_request(:post, "https://travel-buddy-api.herokuapp.com/api/v1/trips/17/checklists").
+              with(
+                body: "{\"name\":\"Personal Luggage\",\"trip_id\":\"17\"}",
+                headers: {
+               'Accept'=>'*/*',
+               'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+               'User-Agent'=>'Faraday v1.7.2'
+                }).
+            to_return(status: 200, body: json_response_new)
+
+            new_checklist = 'Personal Luggage'
 
             within "#checklists" do
-
-              fill_in :name, with: checklist3
+              fill_in :name, with: new_checklist
               click_button 'Create Checklist'
+            end
 
-              expect(page).to have_link(checklist3)
+            json_response = File.read('spec/fixtures/checklist_by_trip_new.json')
+            stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/trips/17/checklists").
+            with(
+             headers: {
+              'Accept'=>'*/*',
+              'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+              'User-Agent'=>'Faraday v1.7.2'
+              }).
+            to_return(status: 200, body: json_response)
+
+            visit trips_dashboard_path(17)
+
+            within "#checklists" do
+              expect(page).to have_link(new_checklist)
             end
           end
 
           context 'when I click on the checklist link' do
             it 'redirects me to the checklist show page' do
-              click_link(checklist1)
+              within "#checklist-1" do
+                click_link('Blue Plate Grill')
+              end
 
-              expect(current_path).to eq("/trip_dashboard/checklists/#{checklist1.id}")
+              expect(current_path).to eq(trips_dashboard_checklist_path(17,37))
             end
           end
         end
       end
 
       describe 'Chat' do
-        it 'displays a message board section' do
+        xit 'displays a message board section' do
           author1 = 'antonio.j.king@gmail.com'
           author2 = 'elliotolbright@gmail.com'
           message1 = "Who is picking up Matt from the Airport?"
@@ -126,11 +159,12 @@ RSpec.describe 'Trips dashboard page' do
           end
         end
 
-        it 'has to a form to add a message to the chat feed'
+        xit 'has to a form to add a message to the chat feed' do
+        end
       end
 
       describe 'Joining Freinds' do
-        it 'displays a friends joining section' do
+        xit 'displays a friends joining section' do
           within "#friends_joining" do
             expect(page).to have_content('Friends Joining')
             # expect(page).to have_content()
@@ -139,7 +173,8 @@ RSpec.describe 'Trips dashboard page' do
           end
         end
 
-        it 'has a form to invite friends to join the trip'
+        xit 'has a form to invite friends to join the trip' do
+        end
       end
     end
   end

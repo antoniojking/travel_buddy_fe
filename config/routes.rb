@@ -7,5 +7,9 @@ Rails.application.routes.draw do
 
   get '/user_dashboard', to: 'users#show'
 
-  get '/trip_dashboard', to: 'trips#show'
+  namespace :trips do
+    resources :dashboard, only: [:show] do
+      resources :checklist, only: [:show, :create]
+    end
+  end
 end
