@@ -89,7 +89,7 @@
 - LinkedIn: [Michael Abbott](https://www.linkedin.com/in/mjabbottdesign/)
 
 👤  **Matt Kragen**
-- Github: [Matt Kragen](https://github.com/InOmn1aParatus)
+- Github: [Matt Kragen](https://github.com/matt-kragen)
 - LinkedIn: [Matt Kragen](https://www.linkedin.com/in/mattkragen/)
 
 👤  **Matt Toensing**
