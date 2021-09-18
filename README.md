@@ -74,7 +74,7 @@
 
 👤  **Antonio King**
 - Github: [Antonio King](https://github.com/antoniojking)
-- LinkedIn: [Antonio Sweet](https://www.linkedin.com/in/antoniojking/)
+- LinkedIn: [Antonio King](https://www.linkedin.com/in/antoniojking/)
 
 👤  **Elliot Olbright**
 - Github: [Elliot Olbright](https://github.com/ElliotOlbright)
