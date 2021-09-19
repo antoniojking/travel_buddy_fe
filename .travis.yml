@@ -17,6 +17,6 @@ env:
   # global:
   #   secure: 
 
-  before_install:
-  - yes | gem update --system --force
-  - gem install bundler
+before_install:
+- yes | gem update --system --force
+- gem install bundler
