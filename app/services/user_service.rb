@@ -6,6 +6,7 @@ class UserService
 
     def get_user_info(spotify_id, email, token, refresh_token)
       response = conn('https://travel-buddy-api.herokuapp.com/api/v1/users').post do |f|
+        f.headers['CONTENT_TYPE'] = 'application/json'
         f.params['user']['spotify_id'] = spotify_id
         f.params['user']['email'] = email
         f.params['user']['token'] = token
