@@ -6,8 +6,12 @@ Rails.application.routes.draw do
   resources 'explore', only: [:index, :show]
 
   get '/user_dashboard', to: 'users#show'
-
-  get '/trip_dashboard', to: 'trips#show'
-
+ 
   get '/auth/spotify/callback', to: 'sessions#create'
+  
+  namespace :trips do
+    resources :dashboard, only: [:show] do
+      resources :checklist, only: [:show, :create]
+    end
+  end
 end
