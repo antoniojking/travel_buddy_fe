@@ -4,7 +4,7 @@ rbenv:
 addons:
   postgresql: 9.6
 script:
-- rspec
+- bundle exec rspec
 deploy:
   provider: heroku
   api_key:
