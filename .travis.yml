@@ -16,5 +16,5 @@ deploy:
     repo: antoniojking/travel_buddy_fe
     branch: main
 env:
-  global:
-    secure: 
+  # global:
+  #   secure: 
