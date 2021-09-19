@@ -4,7 +4,7 @@ rbenv:
 addons:
   postgresql: 9.6
 script:
-- bundle exec rspec
+- bundle exec rspec --color --format documentation --require spec_helper --require rails_helper
 deploy:
   provider: heroku
   api_key:
@@ -12,7 +12,6 @@ deploy:
   app: travel-buddy-turing
   on:
      branch: main
-  run: rails db:migrate
     # repo: antoniojking/travel_buddy_fe
 env:
   # global:
