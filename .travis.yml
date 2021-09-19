@@ -11,10 +11,10 @@ deploy:
   api_key:
     secure: Txxd8KjnpYZs4I0X0YZhJGt5a35qjnoqfWxv74SxTe7Dkd2tDlVQ4Ef1PuvJYhs3odHYQ8rdHmVPtDguqD1IfwL4zeeZenbK5oXqbXLQn+q3jYpP2HGKfOIc54scwaJev7PJLNTzGbtDFPq1pdoIQS30ynvRSSSOUGmVGboTyYLeoCyhnPIR+vV3PVuUS9vsz/LuURlCJV7/Tz0FZhnxQaYoYgFLUYNEvb54KHC/0jq7GJQb8ywiWlesn96DKskfINFsyHE0YASRAV9cJ3DX95AgKpTfSM2Cu2pOk21wqT9uWfoSXwuUCcBvQHC4ZY79gopPnNe+Gr4dqAZMlDDbkjjLthT3Ekwm16sFV4exFq0OUxxWvWgilZv9r53daoFcfAwCdy2dxyaMEgALk0fJmR7kkVpE7jAgqtHUB4rJ1WcmQ1LXuW7BUWO3rXyl3IJaPpNfZyF6BdY76vXNXdtrmoFLC5Qqsw2J9plxFFjlSh4wJlCx1/KAvXkBLbu5h3McldtJblQSC38Gaxn4oFEjvePQu11i4rDkTjFECxMAX/hgMx9KsAx1y4FhRt0oxak4vxOlsAXv5TkzPx8PfQP54r5MZ331buuL9u3aetd4RE4haR3wRyH/9jTlv7dfwBysfH5nX42ycXqVG3ykrCUk3eHlNskuSe8KzpcCD5FRhY0=
   app: travel-buddy-turing
-  run: rails db:migrate
   on:
-    repo: antoniojking/travel_buddy_fe
-    branch: main
+     branch: main
+  run: rails db:migrate
+    # repo: antoniojking/travel_buddy_fe
 env:
   # global:
   #   secure: 
