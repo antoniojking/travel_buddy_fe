@@ -17,6 +17,8 @@ require "sprockets/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+RSpotify::authenticate("7c8e52fe352946048d8b7ec34ebaa9ef", "5514cfcc2a7148de8ddd7f3c6d3b2f83")
+
 module TravelBuddyFe
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
