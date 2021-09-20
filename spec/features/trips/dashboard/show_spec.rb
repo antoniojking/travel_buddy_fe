@@ -2,17 +2,14 @@ require 'rails_helper'
 
 RSpec.describe 'Trips dashboard page' do
   describe 'as an authenticated user' do
-    # let(:email) { 'funbucket13' }
-    # let(:password) { 'test' }
-    # let(:user) { User.create(email: email, password: password) }
-
     # before do
     #   allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     # end
+    before :each do
+      visit trips_dashboard_path(6)
+    end
 
     describe "when I visit a trip's dashboard" do
-      # before { visit trips_dashboard_path(17) }
-
       xit 'displays trip attributes' do
         expect(current_path).to eq(trips_dashboard_path(17))
         expect(page).to have_content('Trip Name')
@@ -62,17 +59,17 @@ RSpec.describe 'Trips dashboard page' do
 
       describe 'Trip Checklists' do
         before :each do
-          json_response = File.read('spec/fixtures/checklist_by_trip.json')
-          stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/trips/17/checklists").
-          with(
-           headers: {
-            'Accept'=>'*/*',
-            'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-            'User-Agent'=>'Faraday v1.7.2'
-            }).
-          to_return(status: 200, body: json_response)
+          # json_response = File.read('spec/fixtures/checklist_by_trip.json')
+          # stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/trips/17/checklists").
+          # with(
+          #  headers: {
+          #   'Accept'=>'*/*',
+          #   'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+          #   'User-Agent'=>'Faraday v1.7.2'
+          #   }).
+          # to_return(status: 200, body: json_response)
 
-          visit trips_dashboard_path(17)
+          visit trips_dashboard_path(6)
         end
 
         it 'displays a trip checklists section' do
@@ -94,16 +91,16 @@ RSpec.describe 'Trips dashboard page' do
 
         context 'when I fill in the checklist name field and click on the create checklist button' do
           it 'adds the created checklist to the list as a link' do
-            json_response_new = File.read('spec/fixtures/checklist_create.json')
-            stub_request(:post, "https://travel-buddy-api.herokuapp.com/api/v1/trips/17/checklists").
-              with(
-                body: "{\"name\":\"Personal Luggage\",\"trip_id\":\"17\"}",
-                headers: {
-               'Accept'=>'*/*',
-               'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-               'User-Agent'=>'Faraday v1.7.2'
-                }).
-            to_return(status: 200, body: json_response_new)
+            # json_response_new = File.read('spec/fixtures/checklist_create.json')
+            # stub_request(:post, "https://travel-buddy-api.herokuapp.com/api/v1/trips/17/checklists").
+            #   with(
+            #     body: "{\"name\":\"Personal Luggage\",\"trip_id\":\"17\"}",
+            #     headers: {
+            #    'Accept'=>'*/*',
+            #    'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+            #    'User-Agent'=>'Faraday v1.7.2'
+            #     }).
+            # to_return(status: 200, body: json_response_new)
 
             new_checklist = 'Personal Luggage'
 
