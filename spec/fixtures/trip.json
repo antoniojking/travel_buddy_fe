@@ -1,0 +1,17 @@
+{
+    "data": {
+        "id": 24,
+        "type": "trip",
+        "attributes": {
+            "name": "Michael's trip 1",
+            "start_date": null,
+            "end_date": null,
+            "park_code": "romo",
+            "park_name": "Rocky Mountain National Park",
+            "checklists": [],
+            "accommodations": [],
+            "users": [],
+            "user_id": 7
+        }
+    }
+}
