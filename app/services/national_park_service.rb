@@ -23,7 +23,7 @@ class NationalParkService
 
 
   def self.conn
-    Faraday.new(url: 'https://developer.nps.gov/api/v1/') do |req|
+    Faraday.new(url: 'https://travel-buddy-api.herokuapp.com/api/v1/') do |req|
       req.headers['X-Api-Key'] = ENV['nps_api_key']
     end
   end
