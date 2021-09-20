@@ -1,7 +1,18 @@
 <h1 style="text-align:center;">NP Explore Page</h1>
 
+<h1 style="text-align:center;">Find Your Next Destination</h1>
+
 <h1 style="text-align:center;">Popular Parks Place Holder</h1>
 <br>
+
+<div id="parks">
+  <h2>List of National Parks</h2>
+  <ul>
+    <% @parks.each do |park_name| %>
+      <li><%= link_to "#{park_name}", '#' %></li>
+    <% end %>
+  </ul>
+</div>
 
 <p style="text-align:center; color:red;">option1</p>
 
@@ -10,14 +21,5 @@
     <%= render 'search_state' %>
   <br>
     <%= render 'search_activity' %>
-  <% end %>
-</div>
-
-<br> 
-<div id="option2" align="center" class="mb-3">
-  <p style="text-align:center; color:red;">option2</p>
-  <%= render 'search_activity_and_state' %>
-  <% if params[:activity] && params[:state] %>
-    <h3>Searching in: <%= @state %>, with activity <%= @activity %></h3> 
   <% end %>
 </div>
