@@ -17,7 +17,7 @@ class Trip
     @park_name =      data[:attributes][:park_name]
     @checklists =     data[:attributes][:checklists]
     @accommodations = data[:attributes][:accommodations]
-    @travel_buddies = data[:attributes][:users]
+    @travel_buddies = data[:attributes][:travel_buddies]
     @host =           data[:attributes][:user_id]
   end
 end
