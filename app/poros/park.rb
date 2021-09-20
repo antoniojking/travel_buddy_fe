@@ -1,15 +1,17 @@
 class Park
   attr_reader :id,
-              :url,
-              :fullName,
+              :name,
               :description,
-              :images
+              :website,
+              :state,
+              :image
 
   def initialize(attributes)
     @id           = attributes[:id]
-    @fullName     = attributes[:fullName]
+    @name         = attributes[:fullName]
     @description  = attributes[:description]
-    @url          = attributes[:url]
-    @images       = attributes[:images]
+    @website      = attributes[:url]
+    @state        = attributes[:states]
+    @image        = attributes[:images][0][:url]
   end
 end

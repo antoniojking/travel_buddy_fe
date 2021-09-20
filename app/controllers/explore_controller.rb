@@ -1,5 +1,6 @@
-class ExploreController < ApplicationController 
+class ExploreController < ApplicationController
   def index
+    @parks = NationalParkFacade.all_parks
     @state    = params[:state]
     @activity = params[:activity]
 
@@ -7,4 +8,4 @@ class ExploreController < ApplicationController
   end
 
   def show; end
-end 
+end

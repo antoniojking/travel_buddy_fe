@@ -60,7 +60,7 @@ group :test do
   gem 'simplecov'
   gem 'rspec-rails'
   gem 'webmock'
-  gem 'vcr'
+  # gem 'vcr'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
