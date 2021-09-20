@@ -1,0 +1,226 @@
+{
+  "data": [
+    {
+      "id": "romo",
+      "type": "park",
+      "attributes": {
+        "name": "Rocky Mountain National Park",
+        "description": "Rocky Mountain National Park’s 415 square miles encompass and protect spectacular mountain environments. Enjoy Trail Ridge Road – which crests at over 12,000 feet including many overlooks to experience the subalpine and alpine worlds – along with over 300 miles of hiking trails, wildflowers, wildlife, starry nights, and fun times. In a world of superlatives, Rocky is on top!",
+        "activities": [
+          {
+            "id": "09DF0950-D319-4557-A57E-04CD2F63FF42",
+            "name": "Arts and Culture"
+          },
+          {
+            "id": "5F723BAD-7359-48FC-98FA-631592256E35",
+            "name": "Auto and ATV"
+          },
+          {
+            "id": "0B4A5320-216D-451A-9990-626E1D5ACE28",
+            "name": "Scenic Driving"
+          },
+          {
+            "id": "13A57703-BB1A-41A2-94B8-53B692EB7238",
+            "name": "Astronomy"
+          },
+          {
+            "id": "7CE6E935-F839-4FEC-A63E-052B1DEF39D2",
+            "name": "Biking"
+          },
+          {
+            "id": "A59947B7-3376-49B4-AD02-C0423E08C5F7",
+            "name": "Camping"
+          },
+          {
+            "id": "4A58AF13-E8FB-4530-B41A-97DF0B0C77B7",
+            "name": "Backcountry Camping"
+          },
+          {
+            "id": "9159DF0F-951D-4AAE-9987-CEB3CE2A9ADA",
+            "name": "Car or Front Country Camping"
+          },
+          {
+            "id": "7CFF5F03-5ECC-4F5A-8572-75D1F0976C0C",
+            "name": "Group Camping"
+          },
+          {
+            "id": "C5C5971C-E325-4CEB-8C81-EE49A881DF17",
+            "name": "RV Camping"
+          },
+          {
+            "id": "B12FAAB9-713F-4B38-83E4-A273F5A43C77",
+            "name": "Climbing"
+          },
+          {
+            "id": "AE42B46C-E4B7-4889-A122-08FE180371AE",
+            "name": "Fishing"
+          },
+          {
+            "id": "1DFACD97-1B9C-4F5A-80F2-05593604799E",
+            "name": "Food"
+          },
+          {
+            "id": "C6D3230A-2CEA-4AFE-BFF3-DC1E2C2C4BB4",
+            "name": "Picnicking"
+          },
+          {
+            "id": "42FD78B9-2B90-4AA9-BC43-F10E9FEA8B5A",
+            "name": "Hands-On"
+          },
+          {
+            "id": "31F88DA6-696F-441F-89CF-D7B1415C4CB9",
+            "name": "Citizen Science"
+          },
+          {
+            "id": "9456A40A-AF75-4AD3-8BE1-79C4A7DBEDFC",
+            "name": "Volunteer Vacation"
+          },
+          {
+            "id": "BFF8C027-7C8F-480B-A5F8-CD8CE490BFBA",
+            "name": "Hiking"
+          },
+          {
+            "id": "0307955A-B65C-4CE4-A780-EB36BAAADF0B",
+            "name": "Horse Trekking"
+          },
+          {
+            "id": "1886DA47-0AEC-4568-B9C2-8E9BC316AAAC",
+            "name": "Horseback Riding"
+          },
+          {
+            "id": "DF4A35E0-7983-4A3E-BC47-F37B872B0F25",
+            "name": "Junior Ranger Program"
+          },
+          {
+            "id": "4D06CEED-90C6-4B69-B264-32CC90B69BA6",
+            "name": "Tubing"
+          },
+          {
+            "id": "67FDB577-518E-4A3E-B608-E78941116223",
+            "name": "Snow Tubing"
+          },
+          {
+            "id": "F9B1D433-6B86-4804-AED7-B50A519A3B7C",
+            "name": "Skiing"
+          },
+          {
+            "id": "EAB1EBDE-5B72-493F-8F8F-0EE5B1724436",
+            "name": "Cross-Country Skiing"
+          },
+          {
+            "id": "D99BCDA3-4363-438B-B3A8-06E6EA204C83",
+            "name": "Downhill Skiing"
+          },
+          {
+            "id": "C38B3C62-1BBF-4EA1-A1A2-35DE21B74C17",
+            "name": "Snow Play"
+          },
+          {
+            "id": "01D717BC-18BB-4FE4-95BA-6B13AD702038",
+            "name": "Snowshoeing"
+          },
+          {
+            "id": "0B685688-3405-4E2A-ABBA-E3069492EC50",
+            "name": "Wildlife Watching"
+          },
+          {
+            "id": "5A2C91D1-50EC-4B24-8BED-A2E11A1892DF",
+            "name": "Birdwatching"
+          },
+          {
+            "id": "0C0D142F-06B5-4BE1-8B44-491B90F93DEB",
+            "name": "Park Film"
+          },
+          {
+            "id": "24380E3F-AD9D-4E38-BF13-C8EEB21893E7",
+            "name": "Shopping"
+          },
+          {
+            "id": "467DC8B8-0B7D-436D-A026-80A22358F615",
+            "name": "Bookstore and Park Store"
+          },
+          {
+            "id": "43800AD1-D439-40F3-AAB3-9FB651FE45BB",
+            "name": "Gift Shop and Souvenirs"
+          }
+        ],
+        "contacts": {
+          "phoneNumbers": [
+            {
+              "phoneNumber": "9705861206",
+              "description": "",
+              "extension": "",
+              "type": "Voice"
+            },
+            {
+              "phoneNumber": "9705861319",
+              "description": "",
+              "extension": "",
+              "type": "TTY"
+            }
+          ],
+          "emailAddresses": [
+            {
+              "description": "",
+              "emailAddress": "romo_information@nps.gov"
+            }
+          ]
+        },
+        "directions": "Driving from the east: from I-25, take US Hwy 34 or 36. Driving from the west: from I-70, take US Hwy 40 to Granby to US Hwy 34 to Grand Lake. From mid-October until late May, Trail Ridge Road between Estes Park and Grand Lake is closed to vehicles, so driving between the two takes ~4 hours. The closest airport is Denver International (DIA). There is no public transportation between nearby cities and the park.",
+        "operating_hours": [
+          {
+            "exceptions": [],
+            "description": "While certain roads and facilities may be closed, the park is open 24 hours a day, 365 days a year.",
+            "standardHours": {
+              "wednesday": "All Day",
+              "monday": "All Day",
+              "thursday": "All Day",
+              "sunday": "All Day",
+              "tuesday": "All Day",
+              "friday": "All Day",
+              "saturday": "All Day"
+            },
+            "name": "Rocky Mountain National Park"
+          }
+        ],
+        "images": [
+          {
+            "credit": "NPS Photo / Ann Schonlau",
+            "title": "Summer on the Tundra",
+            "altText": "Yellow flowers bloom on tundra slopes with mountains in the background.",
+            "caption": "Old Man of the Mountain bloom on Rocky's alpine tundra.",
+            "url": "https://www.nps.gov/common/uploads/structured_data/3C7ECCCF-1DD8-B71B-0B4CB4FB1834BC1D.jpg"
+          },
+          {
+            "credit": "NPS Photo",
+            "title": "Trail Ridge Road",
+            "altText": "Road sweeps across open tundra with mountains in background.",
+            "caption": "Trail Ridge Road, the highest continuous paved road in the United States, let's visitors experience Rocky's alpine tundra.",
+            "url": "https://www.nps.gov/common/uploads/structured_data/3C7ECE39-1DD8-B71B-0BAA393EB3C3A995.jpg"
+          },
+          {
+            "credit": "NPS Photo / Ann Schonlau",
+            "title": "Elk in Moraine Park",
+            "altText": "A herd of elk stand in a meadow.",
+            "caption": "In the fall, Rocky's elk gather together in groups for the mating season.",
+            "url": "https://www.nps.gov/common/uploads/structured_data/3C7ECF9D-1DD8-B71B-0BDDCD1305CF6893.jpg"
+          },
+          {
+            "credit": "NPS Photo",
+            "title": "Horseshoe Park",
+            "altText": "The moon sets below mountain peaks at sunrise.",
+            "caption": "While the moon sets, the sun rises at Horseshoe Park, one of Rocky's beautiful meadows.",
+            "url": "https://www.nps.gov/common/uploads/structured_data/3C7ED106-1DD8-B71B-0B08F084FEA51AE0.jpg"
+          },
+          {
+            "credit": "NPS Photo",
+            "title": "Longs Peak",
+            "altText": "Longs Peak, covered in snow, against dark moody clouds.",
+            "caption": "Longs Peak towers above Rocky Mountain National Park.",
+            "url": "https://www.nps.gov/common/uploads/structured_data/3C7ECB23-1DD8-B71B-0BC28A0330D6D8D6.png"
+          }
+        ]
+      }
+    }
+  ]
+}
