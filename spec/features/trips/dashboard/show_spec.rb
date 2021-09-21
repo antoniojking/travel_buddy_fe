@@ -8,22 +8,15 @@ RSpec.describe 'Trips dashboard page' do
     before :each do
       json_response = File.read('spec/fixtures/trips/dashboard/trip_new.json')
       stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/trips/6").
-      with(
-        headers: {
-       'Accept'=>'*/*',
-       'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-       'User-Agent'=>'Faraday v1.8.0'
-        }).
-      to_return(status: 200, body: json_response, headers: {})
+      to_return(status: 200, body: json_response)
 
       visit trips_dashboard_path(6)
     end
 
     describe "when I visit a trip's dashboard" do
       it 'displays trip attributes' do
-        expect(current_path).to eq(trips_dashboard_path(6))
-        expect(page).to have_content('Trip Name')
-        expect(page).to have_content('National Park Name')
+        expect(page).to have_content("Michael's trip 1")
+        expect(page).to have_content('Rocky Mountain National Park')
         expect(page).to have_content('Travel Dates')
       end
 
@@ -40,13 +33,29 @@ RSpec.describe 'Trips dashboard page' do
       end
 
       describe 'Accommodations' do
-        it 'displays an accommodations section' do
+        it 'displays an accommodations section, which is empty when a trip is first created' do
           within "#accommodations" do
             expect(page).to have_content('Accommodations')
-            # expect(page).to have_content()
-            # expect(page).to have_field()
-            expect(page).to have_button('Edit')
+            expect(page).to have_button('Create')
+            expect(page).not_to have_selector("#accommodation-1")
           end
+        end
+
+        it 'lists the trips accommodation records, which link to their show page' do
+          json_response = File.read('spec/fixtures/trips/dashboard/trip_accommodation_new.json')
+          stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/trips/6").
+          to_return(status: 200, body: json_response)
+
+          visit trips_dashboard_path(6)
+
+          within "#accommodations" do
+            within "#accommodation-1" do
+              expect(page).to have_link('Camp 4')
+              click_link('Camp 4')
+            end
+          end
+
+          expect(current_path).to eq(trips_dashboard_accommodation_path(6, 1))
         end
       end
 
@@ -71,23 +80,11 @@ RSpec.describe 'Trips dashboard page' do
         context 'when I fill in the checklist name field and click on the create checklist button' do
           it 'adds the created checklist to the list as a link' do
             stub_request(:post, "https://travel-buddy-api.herokuapp.com/api/v1/trips/6/checklists").
-            with(
-               body: "{\"category\":\"Personal Luggage\",\"trip_id\":\"6\"}",
-               headers: {
-           	  'Accept'=>'*/*',
-           	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-           	  'User-Agent'=>'Faraday v1.8.0'
-               }).
+            with(body: "{\"category\":\"Personal Luggage\",\"trip_id\":\"6\"}",).
             to_return(status: 201, body: "", headers: {})
 
             json_response = File.read('spec/fixtures/trips/dashboard/trip_checklist_new.json')
             stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/trips/6").
-            with(
-              headers: {
-             'Accept'=>'*/*',
-             'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-             'User-Agent'=>'Faraday v1.8.0'
-              }).
             to_return(status: 200, body: json_response, headers: {})
 
             new_checklist = 'Personal Luggage'
@@ -108,12 +105,6 @@ RSpec.describe 'Trips dashboard page' do
             it 'redirects me to the checklist show page' do
               json_response = File.read('spec/fixtures/trips/dashboard/trip_checklist_new.json')
               stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/trips/6").
-              with(
-                headers: {
-               'Accept'=>'*/*',
-               'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-               'User-Agent'=>'Faraday v1.8.0'
-                }).
               to_return(status: 200, body: json_response, headers: {})
 
               visit trips_dashboard_path(6)
