@@ -19,17 +19,16 @@
 
 <div id="checklists">
   <h2>Trip Checklist(s)</h2>
-
-  <%= form_with url: trips_dashboard_checklist_index_path(17), method: :post, local: true do |f| %>
-    <%= f.label :name, "New Checklist Name:" %>
-    <%= f.text_field :name %>
+  <%= form_with url: trips_dashboard_checklist_index_path(@trip_id), method: :post, local: true do |f| %>
+    <%= f.label :category, "New Checklist Name:" %>
+    <%= f.text_field :category %>
 
     <%= f.submit "Create Checklist" %>
   <% end %>
 
   <ol>
-    <% @checklists.each.with_index do |checklist, index| %>
-      <li id="checklist-<%= index += 1 %>"><%= link_to checklist.name, trips_dashboard_checklist_path(@trip_id, checklist.id) %> | item count: <%= checklist.item_count %></li>
+    <% @trip.checklists.each_with_index do |checklist, index| %>
+      <li id="checklist-<%= index += 1 %>"><%= link_to checklist[:category], trips_dashboard_checklist_path(@trip_id, checklist[:id]) %></li>
     <% end %>
   </ol
 </div>
