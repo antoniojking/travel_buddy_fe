@@ -7,11 +7,8 @@ class ChecklistFacade
       end
     end
 
-    def trip_checklist_new(trip_id, new_checklist)
-      json = ChecklistService.trip_checklist_new(trip_id, new_checklist)
-      json[:data].map do |checklist|
-        Checklist.new(checklist)
-      end
+    def trip_checklist_new(trip_id, category)
+      ChecklistService.trip_checklist_new(trip_id, category)
     end
   end
 end
