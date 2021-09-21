@@ -5,12 +5,8 @@ describe NationalParkService do
     context ".all_parks" do
       it "returns list of all parks" do
         json_response = File.read('spec/fixtures/list_of_national_parks.json')
-        stub_request(:get, "https://developer.nps.gov/api/v1/parks?limit=465").
-         with(
-           headers: {
-          'X-Api-Key'=>ENV['nps_api_key']
-           }).
-         to_return(status: 200, body: json_response)
+        stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/parks?limit=465").
+          to_return(status: 200, body: json_response, headers: {})
 
         parks = NationalParkService.all_parks
         expect(parks).to be_a Hash
@@ -79,8 +75,8 @@ describe NationalParkService do
       it "establishes connection with api service" do
         conn = NationalParkService.conn
         expect(conn).to be_a Faraday::Connection
-        expect(conn.headers.keys).to include('X-Api-Key')
-        expect(conn.headers['X-Api-Key']).to eq(ENV['nps_api_key'])
+        # expect(conn.headers.keys).to include('X-Api-Key')
+        # expect(conn.headers['X-Api-Key']).to eq(ENV['nps_api_key'])
       end
     end
   end

@@ -3,12 +3,8 @@ require "rails_helper"
 RSpec.describe Park do
   before :each do
     json_response = File.read('spec/fixtures/list_of_national_parks.json')
-    stub_request(:get, "https://developer.nps.gov/api/v1/parks?limit=465").
-    with(
-      headers: {
-        'X-Api-Key'=>ENV['nps_api_key']
-        }).
-        to_return(status: 200, body: json_response)
+    stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/parks?limit=465").
+     to_return(status: 200, body: json_response, headers: {})
   end
 
   let(:attrs) { NationalParkService.all_parks[:data].first }

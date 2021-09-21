@@ -8,6 +8,9 @@ RSpec.describe NationalParkFacade do
            headers: {
           'X-Api-Key'=>ENV['nps_api_key']}).
       to_return(status: 200, body: json_response)
+
+    stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/parks?limit=465").
+         to_return(status: 200, body: json_response, headers: {})
   end
 
   describe "class methods" do

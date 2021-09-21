@@ -5,8 +5,8 @@ Road Blocks:
 -
 
 Test Coverage:
-[] I have tested this code with RSpec
-[] Simplecov coverage is >95%
+- [] I have tested this code with RSpec
+- [] Simplecov coverage is >95%
 -
 
 Questions/Notes:

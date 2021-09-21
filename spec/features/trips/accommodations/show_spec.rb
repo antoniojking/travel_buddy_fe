@@ -8,7 +8,7 @@ RSpec.describe 'accommodation show page' do
     visit trips_dashboard_accommodation_path(39, 7)
   end
 
-  it 'can display an accommodation\'s attributes' do
+  it "can display an accommodation's attributes" do
     expect(page).to have_content("Belgrade")
     expect(page).to have_content("Location: Rakaposhi")
     expect(page).to have_content("Details: Whiteboards are white because Chuck Norris scared them that way.")
