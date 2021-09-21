@@ -6,20 +6,23 @@ RSpec.describe 'Trips dashboard page' do
     #   allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     # end
     before :each do
+      json_response = File.read('spec/fixtures/trips/dashboard/trip_new.json')
+      stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/trips/6").
+      to_return(status: 200, body: json_response)
+
       visit trips_dashboard_path(6)
     end
 
     describe "when I visit a trip's dashboard" do
-      xit 'displays trip attributes' do
-        expect(current_path).to eq(trips_dashboard_path(17))
-        expect(page).to have_content('Trip Name')
-        expect(page).to have_content('National Park Name')
+      it 'displays trip attributes' do
+        expect(page).to have_content("Michael's trip 1")
+        expect(page).to have_content('Rocky Mountain National Park')
         expect(page).to have_content('Travel Dates')
       end
 
       describe 'Weather' do
         #call on weather api facade
-        xit 'displays a weather forecast section' do
+        it 'displays a weather forecast section' do
           within "#weather" do
             expect(page).to have_content('Weather Forecast')
             # expect(page).to have_content()
@@ -30,96 +33,69 @@ RSpec.describe 'Trips dashboard page' do
       end
 
       describe 'Accommodations' do
-        xit 'displays an accommodations section' do
+        it 'displays an accommodations section, which is empty when a trip is first created' do
           within "#accommodations" do
             expect(page).to have_content('Accommodations')
-            # expect(page).to have_content()
-            # expect(page).to have_field()
-            expect(page).to have_button('Edit')
+            expect(page).to have_button('Create')
+            expect(page).not_to have_selector("#accommodation-1")
           end
         end
 
-        it 'has a form to add a reservation'
-        it 'has a button to edit details of an existing reservation'
-      end
+        it 'lists the trips accommodation records, which link to their show page' do
+          json_response = File.read('spec/fixtures/trips/dashboard/trip_accommodation_new.json')
+          stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/trips/6").
+          to_return(status: 200, body: json_response)
 
-      describe 'Activites' do
-        xit 'displays an activities section' do
-          within "#activities" do
-            expect(page).to have_content('Activities')
-            # expect(page).to have_content()
-            # expect(page).to have_field()
-            expect(page).to have_button('Edit')
+          visit trips_dashboard_path(6)
+
+          within "#accommodations" do
+            within "#accommodation-1" do
+              expect(page).to have_link('Camp 4')
+              click_link('Camp 4')
+            end
           end
-        end
 
-        it 'has a form to add an activity'
-        it 'has a button to edit detail of an existing activity'
+          expect(current_path).to eq(trips_dashboard_accommodation_path(6, 1))
+        end
       end
 
       describe 'Trip Checklists' do
-        before :each do
-          # json_response = File.read('spec/fixtures/checklist_by_trip.json')
-          # stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/trips/17/checklists").
-          # with(
-          #  headers: {
-          #   'Accept'=>'*/*',
-          #   'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-          #   'User-Agent'=>'Faraday v1.7.2'
-          #   }).
-          # to_return(status: 200, body: json_response)
+        it 'displays a trip checklists section' do
 
-          visit trips_dashboard_path(6)
-        end
-
-        xit 'displays a trip checklists section' do
           within "#checklists" do
             expect(page).to have_content('Trip Checklist(s)')
-              within "#checklist-1" do
-                expect(page).to have_link('Blue Plate Grill')
-                expect(page).to have_content('Blue Plate Grill | item count: 0')
-              end
+            expect(page).not_to have_selector("#checklist-1")
+              # within "#checklist-1" do
+              #   expect(page).to have_link('Blue Plate Grill')
+              # end
           end
         end
 
         xit 'has a form to create new checklists' do
           within "#checklists" do
-            expect(page).to have_field(:name)
+            expect(page).to have_field(:category)
             expect(page).to have_button('Create Checklist')
           end
         end
 
         context 'when I fill in the checklist name field and click on the create checklist button' do
-          xit 'adds the created checklist to the list as a link' do
-            # json_response_new = File.read('spec/fixtures/checklist_create.json')
-            # stub_request(:post, "https://travel-buddy-api.herokuapp.com/api/v1/trips/17/checklists").
-            #   with(
-            #     body: "{\"name\":\"Personal Luggage\",\"trip_id\":\"17\"}",
-            #     headers: {
-            #    'Accept'=>'*/*',
-            #    'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-            #    'User-Agent'=>'Faraday v1.7.2'
-            #     }).
-            # to_return(status: 200, body: json_response_new)
+          it 'adds the created checklist to the list as a link' do
+            stub_request(:post, "https://travel-buddy-api.herokuapp.com/api/v1/trips/6/checklists").
+            with(body: "{\"category\":\"Personal Luggage\",\"trip_id\":\"6\"}",).
+            to_return(status: 201, body: "", headers: {})
+
+            json_response = File.read('spec/fixtures/trips/dashboard/trip_checklist_new.json')
+            stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/trips/6").
+            to_return(status: 200, body: json_response, headers: {})
 
             new_checklist = 'Personal Luggage'
 
             within "#checklists" do
-              fill_in :name, with: new_checklist
+              fill_in :category, with: new_checklist
               click_button 'Create Checklist'
             end
 
-            json_response = File.read('spec/fixtures/checklist_by_trip_new.json')
-            stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/trips/17/checklists").
-            with(
-             headers: {
-              'Accept'=>'*/*',
-              'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-              'User-Agent'=>'Faraday v1.7.2'
-              }).
-            to_return(status: 200, body: json_response)
-
-            visit trips_dashboard_path(17)
+            expect(current_path).to eq(trips_dashboard_path(6))
 
             within "#checklists" do
               expect(page).to have_link(new_checklist)
@@ -127,41 +103,25 @@ RSpec.describe 'Trips dashboard page' do
           end
 
           context 'when I click on the checklist link' do
-            xit 'redirects me to the checklist show page' do
+            it 'redirects me to the checklist show page' do
+              json_response = File.read('spec/fixtures/trips/dashboard/trip_checklist_new.json')
+              stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/trips/6").
+              to_return(status: 200, body: json_response, headers: {})
+
+              visit trips_dashboard_path(6)
+
               within "#checklist-1" do
-                click_link('Blue Plate Grill')
+                click_link('Personal Luggage')
               end
 
-              expect(current_path).to eq(trips_dashboard_checklist_path(17,37))
+              expect(current_path).to eq(trips_dashboard_checklist_path(6,1))
             end
           end
         end
       end
 
-      describe 'Chat' do
-        xit 'displays a message board section' do
-          author1 = 'antonio.j.king@gmail.com'
-          author2 = 'elliotolbright@gmail.com'
-          message1 = "Who is picking up Matt from the Airport?"
-          message2 = "Not me"
-
-          within "#chat" do
-            expect(page).to have_content('Message Board/Chat')
-            expect(page).to have_content(author1)
-            expect(page).to have_content(message1)
-            expect(page).to have_content(author2)
-            expect(page).to have_content(message2)
-            # expect(page).to have_field()
-            # expect(page).to have_button()
-          end
-        end
-
-        xit 'has to a form to add a message to the chat feed' do
-        end
-      end
-
       describe 'Joining Freinds' do
-        xit 'displays a friends joining section' do
+        it 'displays a friends joining section' do
           within "#friends_joining" do
             expect(page).to have_content('Friends Joining')
             # expect(page).to have_content()
@@ -173,6 +133,42 @@ RSpec.describe 'Trips dashboard page' do
         xit 'has a form to invite friends to join the trip' do
         end
       end
+
+      # describe 'Chat' do
+      #   xit 'displays a message board section' do
+      #     author1 = 'antonio.j.king@gmail.com'
+      #     author2 = 'elliotolbright@gmail.com'
+      #     message1 = "Who is picking up Matt from the Airport?"
+      #     message2 = "Not me"
+      #
+      #     within "#chat" do
+      #       expect(page).to have_content('Message Board/Chat')
+      #       expect(page).to have_content(author1)
+      #       expect(page).to have_content(message1)
+      #       expect(page).to have_content(author2)
+      #       expect(page).to have_content(message2)
+      #       # expect(page).to have_field()
+      #       # expect(page).to have_button()
+      #     end
+      #   end
+      #
+      #   xit 'has to a form to add a message to the chat feed' do
+      #   end
+      # end
+
+      # describe 'Activites' do
+      #   xit 'displays an activities section' do
+      #     within "#activities" do
+      #       expect(page).to have_content('Activities')
+      #       # expect(page).to have_content()
+      #       # expect(page).to have_field()
+      #       expect(page).to have_button('Edit')
+      #     end
+      #   end
+      #
+      #   it 'has a form to add an activity'
+      #   it 'has a button to edit detail of an existing activity'
+      # end
     end
   end
 end

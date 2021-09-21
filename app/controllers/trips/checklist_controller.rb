@@ -4,7 +4,7 @@ class Trips::ChecklistController < ApplicationController
   end
 
   def create
-    @checklist = ChecklistFacade.trip_checklist_new(params[:dashboard_id], params[:name])
+    @checklist = ChecklistFacade.trip_checklist_new(params[:dashboard_id], params[:category])
     redirect_to trips_dashboard_path(params[:dashboard_id])
   end
 end
