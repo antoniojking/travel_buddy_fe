@@ -26,5 +26,22 @@ RSpec.describe "Park show page" do
       expect(page).to have_content('States: CO')
       expect(page).to have_xpath("//img[@src='https://www.nps.gov/common/uploads/structured_data/3C7ECCCF-1DD8-B71B-0B4CB4FB1834BC1D.jpg']")
     end
+
+    it 'can create a new trip using button' do
+      json_response = File.read('spec/fixtures/single_park.json')
+      park_code = 'romo'
+      stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/parks/#{park_code}").
+         with(
+           headers: {
+          'Accept'=>'*/*',
+          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+          'User-Agent'=>'Faraday v1.8.0'
+           }).
+         to_return(status: 200, body: json_response)
+
+      visit "https://travel-buddy-turing.herokuapp.com/parks/#{park_code}"
+
+      expect(page).to have_button()
+    end
   end
 end
