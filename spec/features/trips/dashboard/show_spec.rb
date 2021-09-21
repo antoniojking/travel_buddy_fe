@@ -44,9 +44,13 @@ RSpec.describe 'Trips dashboard page' do
         it 'lists the trips accommodation records, which link to their show page' do
           json_response = File.read('spec/fixtures/trips/dashboard/trip_accommodation_new.json')
           stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/trips/6").
-          to_return(status: 200, body: json_response)
+            to_return(status: 200, body: json_response)
 
           visit trips_dashboard_path(6)
+
+          json_response = File.read('spec/fixtures/trips/dashboard/accommodation_show.json')
+          stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/trips/6/accommodations/1").
+            to_return(status: 200, body: json_response)
 
           within "#accommodations" do
             within "#accommodation-1" do
