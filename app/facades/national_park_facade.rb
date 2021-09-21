@@ -1,11 +1,11 @@
 class NationalParkFacade
   class << self
     def all_parks
-    json = NationalParkService.all_parks
+      json = NationalParkService.all_parks
 
-    json[:data].map do |park_data|
-      Park.new(park_data)
-    end
+      json[:data].map do |park_data|
+        Park.new(park_data)
+      end
     end
 
     def parks_by_state(state_code)
@@ -23,6 +23,5 @@ class NationalParkFacade
         Park.new(park)
       end
     end
-
   end
 end

@@ -6,3 +6,4 @@ class TripFacade
       end
     end
   end
+end 

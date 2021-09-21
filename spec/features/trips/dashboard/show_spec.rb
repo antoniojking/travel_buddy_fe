@@ -61,6 +61,7 @@ RSpec.describe 'Trips dashboard page' do
 
       describe 'Trip Checklists' do
         it 'displays a trip checklists section' do
+
           within "#checklists" do
             expect(page).to have_content('Trip Checklist(s)')
             expect(page).not_to have_selector("#checklist-1")
@@ -70,7 +71,7 @@ RSpec.describe 'Trips dashboard page' do
           end
         end
 
-        it 'has a form to create new checklists' do
+        xit 'has a form to create new checklists' do
           within "#checklists" do
             expect(page).to have_field(:category)
             expect(page).to have_button('Create Checklist')
