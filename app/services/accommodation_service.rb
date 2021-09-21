@@ -1,9 +1,9 @@
 class AccommodationService < BaseService
-  # def self.get_trip_accommodations(trip_id)
-  #   response = conn.get("/api/v1/trips/#{trip_id}/accommodations")
-  #
-  #   JSON.parse(response.body, symbolize_names: true)
-  # end
+  def self.get_trip_accommodations(trip_id)
+    response = conn.get("/api/v1/trips/#{trip_id}/accommodations")
+
+    JSON.parse(response.body, symbolize_names: true)
+  end
 
   def self.get_accommodation(trip_id, accommodation_id)
     response = conn.get("/api/v1/trips/#{trip_id}/accommodations/#{accommodation_id}")
