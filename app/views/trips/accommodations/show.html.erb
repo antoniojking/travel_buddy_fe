@@ -3,6 +3,6 @@
 <h3>Location: <%= @accommodation.location %></h3>
 <h3>Details: <%= @accommodation.details %></h3>
 
-<%= button_to 'Edit Accommodation', edit_trips_dashboard_accommodation_path(@trip, @accommodation)%>
+<%= button_to 'Edit Accommodation', edit_trips_dashboard_accommodation_path(@trip_id, @accommodation)%>
 
-<%= button_to 'Delete Accommodation', trips_dashboard_accommodation_path(@accommodation), method: :delete%>
+<%= button_to 'Delete Accommodation', trips_dashboard_accommodation_path(@trip_id, @accommodation), method: :delete%>
