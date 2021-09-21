@@ -1,0 +1,37 @@
+{
+    "data": {
+        "id": "2",
+        "type": "checklist",
+        "attributes": {
+            "category": "Snacks",
+            "trip_id": 8,
+            "item_count": 3,
+            "items": [
+                {
+                    "id": 1,
+                    "checklist_id": 2,
+                    "user_id": 4,
+                    "name": "Cheez-its",
+                    "created_at": "2021-09-21T22:55:38.233Z",
+                    "updated_at": "2021-09-21T22:55:38.233Z"
+                },
+                {
+                    "id": 2,
+                    "checklist_id": 2,
+                    "user_id": 4,
+                    "name": "Jerky",
+                    "created_at": "2021-09-21T22:56:09.134Z",
+                    "updated_at": "2021-09-21T22:56:09.134Z"
+                },
+                {
+                    "id": 3,
+                    "checklist_id": 2,
+                    "user_id": 4,
+                    "name": "Nuts",
+                    "created_at": "2021-09-21T22:59:35.865Z",
+                    "updated_at": "2021-09-21T22:59:35.865Z"
+                }
+            ]
+        }
+    }
+}
