@@ -7,5 +7,11 @@ class WeatherFacade
         WeatherForecast.new(day)
       end
     end
+
+    def get_current_weather(location, days)
+      json = WeatherService.get_weather(location, days)
+
+      CurrentWeather.new(json[:data][:attributes])
+    end 
   end
 end
