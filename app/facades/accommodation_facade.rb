@@ -1,9 +1,8 @@
 class AccommodationFacade
   def self.create_accommodations_for_trip(trip_id)
     json = AccommodationService.get_trip_accommodations(trip_id)
-
-    json[:data][:attributes].map do |accommodation|
-      Accommodation.new(accommodation)
+    json[:data].map do |accommodation|
+      Accommodation.new(accommodation[:attributes])
     end
   end
 
