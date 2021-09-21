@@ -15,7 +15,7 @@ class Park
     @phone_number = info[:attributes][:contacts][:phoneNumbers][0][:phoneNumber]
     @directions   = info[:attributes][:directions]
     @hours        = info[:attributes][:operating_hours][0][:standardHours]
-    @state        = info[:attributes][:states]
+    @state        = info[:attributes][:state]
     @image        = info[:attributes][:images][0][:url]
   end
 
@@ -24,4 +24,5 @@ class Park
       "#{day.to_s.titleize}: #{hours}"
     end
   end
+
 end

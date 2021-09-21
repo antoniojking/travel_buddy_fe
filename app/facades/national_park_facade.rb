@@ -27,7 +27,7 @@ class NationalParkFacade
     def park_by_code(park_code)
       json = NationalParkService.park_by_code(park_code)
 
-      Park.new(json[:data][0])
+      park = Park.new(json[:data][0])
     end
 
   end
