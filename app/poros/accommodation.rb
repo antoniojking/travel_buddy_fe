@@ -1,9 +1,9 @@
 class Accommodation
-  attr_reader :name, :location, :description
+  attr_reader :name, :location, :details
 
   def initialize(accommodation_data)
     @name = accommodation_data[:name]
     @location = accommodation_data[:location]
-    @description = accommodation_data[:description]
+    @details = accommodation_data[:details]
   end
 end

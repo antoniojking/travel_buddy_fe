@@ -5,7 +5,7 @@ RSpec.describe Accommodation do
     attributes = {
       name: 'Jenny Lake Campground',
       location: 'Teton Park Rd, Moose, WY 83012',
-      description: 'We will be staying at Jenny Lake site 15 from 11/18 to 11/25.'
+      details: 'We will be staying at Jenny Lake site 15 from 11/18 to 11/25.'
     }
 
     accommodation = Accommodation.new(attributes)
@@ -13,6 +13,6 @@ RSpec.describe Accommodation do
     expect(accommodation).to be_an_instance_of(Accommodation)
     expect(accommodation.name).to eq(attributes[:name])
     expect(accommodation.location).to eq(attributes[:location])
-    expect(accommodation.description).to eq(attributes[:description])
+    expect(accommodation.details).to eq(attributes[:details])
   end
 end
