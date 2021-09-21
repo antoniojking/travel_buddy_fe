@@ -15,4 +15,6 @@ Rails.application.routes.draw do
       resources :accommodations
     end
   end
+
+  get '/parks/:park_code', to: 'parks#show'
 end

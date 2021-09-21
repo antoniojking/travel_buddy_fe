@@ -1,0 +1,10 @@
+<h1><%= @park.name %></h1>
+<p><img src="<%= @park.image %>" alt="Park photo" ></p>
+<p>States: <%= @park.state %></p>
+<p>Description: <%= @park.description %></p>
+<p>Phone: <%= @park.phone_number %></p>
+<p>Directions: <%= @park.directions %></p>
+<p>Hours:</p>
+<% @park.operating_hours.each do |day| %>
+  <p><%= day %></p>
+<% end %>

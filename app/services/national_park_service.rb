@@ -19,10 +19,16 @@ class NationalParkService
 
       body = JSON.parse(response.body, symbolize_names: true)
     end
+
+    def park_by_code(park_code)
+      response = conn.get("parks/#{park_code}")
+
+      body = JSON.parse(response.body, symbolize_names: true)
+    end
   end
 
 
   def self.conn
-    Faraday.new(url: 'https://travel-buddy-api.herokuapp.com/api/') 
+    Faraday.new(url: 'https://travel-buddy-api.herokuapp.com/api/v1/')
   end
 end
