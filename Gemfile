@@ -46,6 +46,7 @@ group :development, :test do
   gem 'launchy'
   gem 'orderly'
   gem 'shoulda-matchers'
+  gem 'webmock'
 
 end
 
@@ -59,7 +60,7 @@ end
 group :test do
   gem 'simplecov'
   gem 'rspec-rails'
-  gem 'webmock'
+  # gem 'webmock'
   # gem 'vcr'
 end
 
