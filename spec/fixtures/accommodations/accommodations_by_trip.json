@@ -1,0 +1,15 @@
+{"data":
+  [{"id":"2",
+    "type":"accommodation",
+    "attributes":
+      {"name":"Tripoli",
+      "location":"The Crown",
+      "details":"Chuck Norris burst the dot com bubble."}},
+   {"id":"3",
+    "type":"accommodation",
+    "attributes":
+      {"name":"Apia",
+      "location":"Saser Kangri I",
+      "details":"Chuck Norris can access private methods."}}
+    ]
+  }

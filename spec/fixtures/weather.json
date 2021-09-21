@@ -1,0 +1,24 @@
+{
+  "data": {
+      "id": "Parks Road",
+      "type": "weather",
+      "attributes": {
+          "current_temp": 87.8,
+          "forecast": [
+              {
+                  "date": "2021-09-20",
+                  "min_temp": 71.8,
+                  "max_temp": 88.2,
+                  "condition": "Moderate rain"
+              },
+              {
+                  "date": "2021-09-21",
+                  "min_temp": 72.1,
+                  "max_temp": 93.4,
+                  "condition": "Patchy rain possible"
+              }
+          ],
+          "current_conditions": "Partly cloudy"
+      }
+  }
+}

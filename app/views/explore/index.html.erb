@@ -1,22 +1,44 @@
 <h1 style="text-align:center;">Find Your Next Destination</h1>
 <br>
 
-<div id="option1" align="center" class="mb-3">
+<div id="state-search" align="center" class="mb-3">
   <% if params[:sort].nil? %>
     <%= render 'search_state' %>
   <br>
+  <% end %>
+</div>
+
+<div id="activity-search" align="center" class="mb-3">
+  <% if params[:sort].nil? %>
     <%= render 'search_activity' %>
   <br>
   <% end %>
 </div>
 
-<div id="parks" align="center">
-  <h2>List of National Parks</h2>
-    <% @parks.each do |park| %>
-    <p>
-      <%= link_to "#{park.name}", '#' %>
-      (<%= park.state %>)<br>
-      <img src="<%= park.image %>", alt="<%= park.name %> photo", style="max-width: 450px; max-height: 300px" >,
+<div id="search-results">
+  <h2 style="text-align:center;">Search Results</h2>
+
+  <% if params[:state] %>
+    <% @state.each do |park| %>
+    <p style="text-align:center;">
+      <%= link_to park[:attributes][:name], explore_path(park[:id]) %>
+      <br>
+      <img src="<%= park[:attributes][:images][0][:url] %>", alt="<%= park[:attributes][:name] %> photo", style="max-width: 450px; max-height: 300px" >
     </p>
     <% end %>
+  <% else %>
+    <p>No Search Results to Display</p>
+  <% end %>
+
+  <% if params[:activity] %>
+    <% @activity.each do |park| %>
+    <p style="text-align:center;">
+      <%= link_to park[:attributes][:name], explore_path(park[:id]) %>
+      <br>
+      <img src="#", alt="<%= park[:attributes][:name] %> photo", style="max-width: 450px; max-height: 300px" >
+    </p>
+    <% end %>
+  <% else %>
+    <p style="text-align:center;">No Search Results to Display</p>
+  <% end %>
 </div>

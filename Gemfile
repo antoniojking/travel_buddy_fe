@@ -40,13 +40,14 @@ gem 'rspotify'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  
+
   gem 'pry'
   gem 'capybara'
   gem 'launchy'
   gem 'orderly'
   gem 'shoulda-matchers'
-  
+  gem 'webmock'
+
 end
 
 group :development do
@@ -59,7 +60,7 @@ end
 group :test do
   gem 'simplecov'
   gem 'rspec-rails'
-  gem 'webmock'
+  # gem 'webmock'
   # gem 'vcr'
 end
 
