@@ -1,6 +1,6 @@
 module DropdownSelections
   class << self
-    def states 
+    def states
       CS.states(:us).invert
     end
 
@@ -47,6 +47,6 @@ module DropdownSelections
         "Water Skiing",
         "Wildlife Watching"
       ]
-    end 
-  end 
-end 
+    end
+  end
+end

@@ -40,13 +40,13 @@ gem 'rspotify'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  
+
   gem 'pry'
   gem 'capybara'
   gem 'launchy'
   gem 'orderly'
   gem 'shoulda-matchers'
-  
+
 end
 
 group :development do
