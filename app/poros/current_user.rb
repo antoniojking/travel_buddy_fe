@@ -8,7 +8,7 @@ class CurrentUser
 
   def initialize(current_user_info)
     @id =             current_user_info[:id]
-    @email =          current_user_info[:email]
+    @email =          current_user_info[:attributes][:email]
     @current_trips =  current_user_info[:attributes][:current_trips]
     @upcoming_trips = current_user_info[:attributes][:upcoming_trips]
     @past_trips =     current_user_info[:attributes][:past_trips]
