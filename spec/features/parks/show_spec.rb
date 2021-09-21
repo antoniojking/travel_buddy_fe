@@ -15,8 +15,8 @@ RSpec.describe "Park show page" do
          to_return(status: 200, body: json_response)
 
       visit "https://travel-buddy-turing.herokuapp.com/parks/#{park_code}"
-      expect(page).to have_content('Park Show Page')
-      # save_and_open_page
+      # expect(page).to have_content('Park Show Page')
+
       expect(page).to have_content("Rocky Mountain National Park")
       expect(page).to have_content("Description: Rocky Mountain National Park’s 415 square miles")
       expect(page).to have_content("Phone: 9705861206")
