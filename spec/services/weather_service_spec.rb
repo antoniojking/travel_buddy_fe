@@ -1,8 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'checklist service' do
-  it 'returns weather for given amount of days
-  ' do
+  it 'returns weather for given amount of days' do
     json_response = File.read('spec/fixtures/weather.json')
 
     stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/weather?days=2&location=Estes%20Park").

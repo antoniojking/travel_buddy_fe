@@ -4,7 +4,7 @@ class WeatherFacade
       json = WeatherService.get_weather(location, days)
 
       json[:data][:attributes][:forecast].map do |day|
-        Weather.new(day))
+        WeatherForecast.new(day)
       end
     end
   end
