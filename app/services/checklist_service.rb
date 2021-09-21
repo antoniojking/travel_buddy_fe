@@ -1,9 +1,9 @@
 class ChecklistService
   class << self
-    def by_trip(trip_id)
-      response = conn.get("/api/v1/trips/#{trip_id}/checklists")
-      JSON.parse(response.body, symbolize_names: true)
-    end
+    # def by_trip(trip_id)
+    #   response = conn.get("/api/v1/trips/#{trip_id}/checklists")
+    #   JSON.parse(response.body, symbolize_names: true)
+    # end
 
     def trip_checklist_new(trip_id, category)
       new_checklist = { category: category, trip_id: trip_id }
