@@ -1,22 +1,23 @@
 class ExploreController < ApplicationController
   def index
-    # @parks = NationalParkFacade.all_parks
-
     conn = Faraday.new(url: 'https://travel-buddy-api.herokuapp.com/api/v1/')
 
     response = conn.get('parks') do |req|
       req.params[:state] = params[:state]
     end
 
-    data = JSON.parse(response.body, symbolize_names: true)
-    @parks = data[:data]
+    json = JSON.parse(response.body, symbolize_names: true)
+    @state = json[:data]
 
+    response = conn.get('parks') do |req|
+      req.params[:activity] = params[:activity]
+    end
 
-    @state = params[:state]
-    @activity = params[:activity]
-
-    # @parks = NationalParkFacade.parks_by_state(params[:state])
+    json = JSON.parse(response.body, symbolize_names: true)
+    @activity = json[:data]
   end
 
-  def show; end
+  def show
+
+  end
 end

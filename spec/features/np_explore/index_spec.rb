@@ -2,9 +2,13 @@ require 'rails_helper'
 
 RSpec.describe 'Explore Page' do
   before :each do
-    json_response = File.read('spec/fixtures/tb_be_parks_in_co.json')
+    json_response1 = File.read('spec/fixtures/tb_be_parks_in_co.json')
     stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/parks?state").
-      to_return(status: 200, body: json_response, headers: {})
+      to_return(status: 200, body: json_response1, headers: {})
+
+    json_response2 = File.read('spec/fixtures/tb_be_parks_for_fishing.json')
+    stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/parks?activity").
+      to_return(status: 200, body: json_response2, headers: {})
   end
 
   # Happy Path
@@ -20,10 +24,6 @@ RSpec.describe 'Explore Page' do
   # State in which the park is located
 
   it 'is on the right page and has attributes' do
-    json_response = File.read('spec/fixtures/tb_be_parks_in_co.json')
-    stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/parks?state").
-      to_return(status: 200, body: json_response, headers: {})
-
     visit explore_index_path
 
     expect(current_path).to eq(explore_index_path)
@@ -34,24 +34,17 @@ RSpec.describe 'Explore Page' do
     expect(page).to have_field(:activity)
     expect(page).to have_button('Search Activity')
 
-    expect(page).to have_content('Search Results')
-
-    # within "#parks" do
-    #   expect(page).to have_content('Search Results')
-
-      # expect(page).to have_link('Abraham Lincoln Birthplace National Historical Park')
-      # expect(page).to have_content('State')
-      # expect(page).to have_link('Acadia National Park')
-      # expect(page).to have_content('State')
-      # expect(page).to have_link('Adams National Historical Park')
-      # expect(page).to have_content('State')
-    # end
+    within "#search-results" do
+      expect(page).to have_content('Search Results')
+      expect(page).to have_content('No Search Results to Display')
+    end
   end
 
-  it 'has a drop down menu' do
+  it 'returns a list of links for parks by state upon search' do
     json_response = File.read('spec/fixtures/tb_be_parks_in_co.json')
     stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/parks?state=CO").
       to_return(status: 200, body: json_response, headers: {})
+    data = JSON.parse(json_response, symbolize_names: true)
 
     visit explore_index_path
 
@@ -65,14 +58,29 @@ RSpec.describe 'Explore Page' do
     expect(page).to have_link("Bent's Old Fort National Historic Site")
     expect(page).to have_link('Colorado National Monument')
     expect(page).to have_link('Florissant Fossil Beds National Monument')
+
+    click_link('Colorado National Monument')
+
+    expect(current_path).to eq(explore_path(data[:data][3][:id]))
   end
 
-  xit 'has a search for activities form' do
-    within "#activity-search" do
-      fill_in :activity, with: "squirrels"
+  it 'returns a list of links for parks by activity upon search' do
+    json_response = File.read('spec/fixtures/tb_be_parks_for_fishing.json')
+    stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/parks?activity=fishing").
+      to_return(status: 200, body: json_response, headers: {})
+    data = JSON.parse(json_response, symbolize_names: true)
 
-      click_on 'Search'
-      expect(current_path).to eq(explore_index_path)
+    visit explore_index_path
+
+    within "#activity-search" do
+      fill_in :activity, with: "fishing"
+
+      click_on 'Search Activity'
     end
+
+    expect(current_path).to eq(explore_index_path)
+    expect(page).to have_link('Acadia National Park')
+    expect(page).to have_link('Alagnak Wild River')
+    expect(page).to have_link('Ala Kahakai National Historic Trail')
   end
 end
