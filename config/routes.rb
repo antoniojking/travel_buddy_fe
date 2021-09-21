@@ -14,4 +14,6 @@ Rails.application.routes.draw do
       resources :checklist, only: [:show, :create]
     end
   end
+
+  get '/parks/:park_code', to: 'parks#show'
 end

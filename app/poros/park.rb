@@ -2,16 +2,26 @@ class Park
   attr_reader :id,
               :name,
               :description,
-              :website,
+              :phone_number,
+              :directions,
+              :hours,
               :state,
               :image
 
-  def initialize(attributes)
-    @id           = attributes[:id]
-    @name         = attributes[:fullName]
-    @description  = attributes[:description]
-    @website      = attributes[:url]
-    @state        = attributes[:states]
-    @image        = attributes[:images][0][:url]
+  def initialize(info)
+    @id           = info[:id]
+    @name         = info[:attributes][:name]
+    @description  = info[:attributes][:description]
+    @phone_number = info[:attributes][:contacts][:phoneNumbers][0][:phoneNumber]
+    @directions   = info[:attributes][:directions]
+    @hours        = info[:attributes][:operating_hours][0][:standardHours]
+    @state        = info[:attributes][:states]
+    @image        = info[:attributes][:images][0][:url]
+  end
+
+  def operating_hours
+    @hours.map do |day, hours|
+      "#{day.to_s.titleize}: #{hours}"
+    end
   end
 end

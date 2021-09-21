@@ -19,6 +19,12 @@ class NationalParkService
 
       body = JSON.parse(response.body, symbolize_names: true)
     end
+
+    def park_by_code(park_code)
+      response = conn.get("parks/#{park_code}")
+
+      body = JSON.parse(response.body, symbolize_names: true)
+    end
   end
 
 
