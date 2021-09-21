@@ -18,8 +18,7 @@ RSpec.describe 'accommodation show page' do
     expect(page).to have_button('Edit Accommodation')
   end
 
-  it 'displays a button to edit the accommodation' do
+  it 'displays a button to delete the accommodation' do
     expect(page).to have_button('Delete Accommodation')
-
   end
 end
