@@ -55,9 +55,12 @@ RSpec.describe 'Explore Page' do
     end
 
     expect(current_path).to eq(explore_index_path)
-    expect(page).to have_link("Bent's Old Fort National Historic Site")
-    expect(page).to have_link('Colorado National Monument')
-    expect(page).to have_link('Florissant Fossil Beds National Monument')
+
+    within "#search-results" do
+      expect(page).to have_link("Bent's Old Fort National Historic Site")
+      expect(page).to have_link('Colorado National Monument')
+      expect(page).to have_link('Florissant Fossil Beds National Monument')
+    end
 
     click_link('Colorado National Monument')
 
@@ -77,10 +80,13 @@ RSpec.describe 'Explore Page' do
 
       click_on 'Search Activity'
     end
-
+    
     expect(current_path).to eq(explore_index_path)
-    expect(page).to have_link('Acadia National Park')
-    expect(page).to have_link('Alagnak Wild River')
-    expect(page).to have_link('Ala Kahakai National Historic Trail')
+
+    within "#search-results" do
+      expect(page).to have_link('Acadia National Park')
+      expect(page).to have_link('Alagnak Wild River')
+      expect(page).to have_link('Ala Kahakai National Historic Trail')
+    end
   end
 end
