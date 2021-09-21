@@ -5,7 +5,7 @@ class Checklist
 
   def initialize(data)
     @id         = data[:id]
-    @name       = data[:attributes][:category]
+    @category   = data[:attributes][:category]
     @item_count = data[:attributes][:item_count]
   end
 end

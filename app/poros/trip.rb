@@ -6,7 +6,8 @@ class Trip
               :park_code,
               :park_name,
               :checklists,
-              :travel_buddies
+              :travel_buddies,
+              :accommodations
 
   def initialize(data)
     @id =             data[:id]
