@@ -27,7 +27,7 @@ RSpec.describe "Park show page" do
       expect(page).to have_xpath("//img[@src='https://www.nps.gov/common/uploads/structured_data/3C7ECCCF-1DD8-B71B-0B4CB4FB1834BC1D.jpg']")
     end
 
-    it 'can create a new trip using button' do
+    xit 'can create a new trip using button' do
       json_response = File.read('spec/fixtures/single_park.json')
       park_code = 'romo'
       stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/parks/#{park_code}").
