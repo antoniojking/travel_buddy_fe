@@ -1,6 +1,6 @@
-<h1>Trip Name</h1>
+<h1><%= @trip.name %></h1>
 
-<h3>National Park Name</h3>
+<h3><%= @trip.park_name %></h3>
 <h3>Travel Dates</h3>
 
 <div id="weather">
@@ -9,7 +9,12 @@
 
 <div id="accommodations">
   <h2>Accommodations</h2>
-  <p><%= button_to 'Edit', '#' %></p>
+  <p><%= button_to 'Create', '#' %></p>
+  <ol>
+    <% @trip.accommodations.each do |accommodation| %>
+      <li id="accommodation-<%= accommodation[:id] %>"><%= link_to accommodation[:name], trips_dashboard_accommodation_path(@trip_id, accommodation[:id]) %></li>
+    <% end %>
+  </ol
 </div>
 
 <div id="activities">
