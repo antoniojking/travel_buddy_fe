@@ -1,14 +1,13 @@
 class Trips::AccommodationsController < ApplicationController
   def show
-    @trip = TripFacade.trip_details(params[:dashboard_id])
-    @accommodation = AccommodationFacade.create_accommodation_by_id(params[:dashboard_id], params[:id])
+    @trip_id = params[:dashboard_id]
+    @accommodation = AccommodationFacade.create_accommodation_by_id(@trip_id, params[:id])
     require "pry";binding.pry
   end
 
   def edit
-    require "pry";binding.pry
-    @trip = TripFacade.trip_details(params[:dashboard_id])
-    @accommodation = AccommodationFacade.create_accommodation_by_id(params[:dashboard_id], params[:id])
+    @trip_id = params[:dashboard_id]
+    @accommodation = AccommodationFacade.create_accommodation_by_id(@trip_id, params[:id])
   end
 
   def update
