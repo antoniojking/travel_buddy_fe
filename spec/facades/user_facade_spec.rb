@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe UserFacade do
   it 'can create current user based off of user id' do
     json_response = File.read('spec/fixtures/user/user_info.json')
-    stub_request(:get, 'https://travel-buddy-api.herokuapp.com/api/v1/users/4').to_return(status: 200, body: json_response)
+    stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/users/3112").to_return(status: 200, body: json_response, headers: {})
 
-    user = UserFacade.current_user_info(4)
+    user = UserFacade.current_user_info(3112)
 
     expect(user.id).to eq('3112')
     expect(user.email).to eq('amee@haag-homenick.net')
