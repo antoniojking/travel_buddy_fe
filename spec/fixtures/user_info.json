@@ -1,0 +1,14 @@
+{
+    "data": {
+        "id": "4",
+        "type": "user",
+        "attributes": {
+            "email": "mattdkragen@gmail.com",
+            "spotify_id": "invictus_maneo",
+            "token": "BQDnXUJo7OVrHQGEuK0n4TkokroIRHspL1ddxkD33tvRzMYZbjYvBk_jmpDKnJc9S4kLviMjtMIJEoaQQlWv26R_cI4E3aX-4Kso1GPcll4VbDhv8VqC4VrgPnisVVGsofKrRldx4FbJR9KmH4RIggqWIroLDsvNBsX4tOQ",
+            "refresh_token": "AQAQZlqY-b2Bq5SSOYiPPsT1-NKtfDigZ5m3XBoDFz2_CS4-4bccNwI4_f0NrpwkHME4IRjek_vyRMrE4DGVywyHfrzzZ-K-zZoyufyqqvK8WSI0fXsYZuTm40T4GwNVoXw",
+            "trips": ["Graduation Teton Trip", "Fall Yosemite Trip"],
+            "friends": ["matthew.toensing@gmail.com"]
+        }
+    }
+}
