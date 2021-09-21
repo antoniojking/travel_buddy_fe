@@ -21,7 +21,7 @@
   <% if params[:state] %>
     <% @state.each do |park| %>
     <p style="text-align:center;">
-      <%= link_to park[:attributes][:name], explore_path(park[:id]) %>
+      <%= link_to park[:attributes][:name], "/parks/#{park[:id]}" %>
       <br>
       <img src="<%= park[:attributes][:images][0][:url] %>", alt="<%= park[:attributes][:name] %> photo", style="max-width: 450px; max-height: 300px" >
     </p>
@@ -29,7 +29,7 @@
   <% elsif params[:activity] %>
     <% @activity.each do |park| %>
     <p style="text-align:center;">
-      <%= link_to park[:attributes][:name], explore_path(park[:id]) %>
+      <%= link_to park[:attributes][:name], "/parks/#{park[:id]}" %>
       <br>
       <img src="#", alt="<%= park[:attributes][:name] %> photo", style="max-width: 450px; max-height: 300px" >
     </p>
