@@ -41,7 +41,8 @@ RSpec.describe "Park show page" do
 
       visit "https://travel-buddy-turing.herokuapp.com/parks/#{park_code}"
 
-      expect(page).to have_button()
+      expect(page).to have_button("Create a New Trip to This Park")
+      expect(current_path).to eq(trip_dashboard_path())
     end
   end
 end
