@@ -1,0 +1,27 @@
+{
+  "data": {
+      "id": "7",
+      "type": "trip",
+      "attributes": {
+          "name": "Michael's trip 1",
+          "start_date": null,
+          "end_date": null,
+          "park_code": "romo",
+          "park_name": "Rocky Mountain National Park",
+          "user_id": 7,
+          "checklists": [],
+          "travel_buddies": [
+              {
+                  "id": 7,
+                  "token": "BQDnRUQjXzo9gi7gHhDkEbmoTFimKx7uViRAbd7tLNyaOj6LvNQyg5Zx3Q_UgnLXMFC1M8k4Zoa8V2z13NMCR4-_PM-EzeAHrdUeTQjBzf5ZQDhLZHF3RjPNhbAlYlGriT5w8DDmcPFeC3Q9iEKsOh7WIEUeSpCESOfxocPiLrrUl_abTg",
+                  "refresh_token": "AQCEIhpBbXWVFQyatEbI4jDErK4cNGZrPB8yMfFtVAm6ZcDEE8z4_Ul_eD8v715l0c1906aw2gSu4S7Xm-PAI-1b0bDTNUC_AsVVl2Fu39uJaj-0kHj-21Z86qWSR7dZRK0",
+                  "email": "mjabbott10@gmail.com",
+                  "created_at": "2021-09-19T23:29:22.854Z",
+                  "updated_at": "2021-09-22T00:06:47.944Z",
+                  "spotify_id": "p1687axrt0sn03nuuy8plv0m4"
+              }
+          ],
+          "accommodations": []
+      }
+  }
+}

@@ -20,6 +20,47 @@ RSpec.describe 'Trips dashboard page' do
         expect(page).to have_content('Travel Dates')
       end
 
+      describe 'Travel Dates' do
+        it "displays the trip's start and end dates" do
+          within "#travel-dates" do
+            expect(page).to have_content("Start Date: TBD")
+            expect(page).to have_content("End Date: TBD")
+          end
+        end
+
+        it "displays a form to update the trip's start and/or end dates" do
+          stub_request(:patch, "https://travel-buddy-api.herokuapp.com/api/v1/trips/6?end_date=TBD&start_date=2008").
+            to_return(status: 200)
+
+          json_response = File.read('spec/fixtures/trips/dashboard/trip_update_start_date.json')
+          stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/trips/6").
+            to_return(status: 200, body: json_response)
+
+          within "#travel-dates" do
+            fill_in :start_date, with: 2021-11-02
+            click_button 'Update start/end dates'
+          end
+
+          expect(page).to have_content("Start Date: 2021-11-02")
+          expect(page).to have_content("End Date: TBD")
+
+          stub_request(:patch, "https://travel-buddy-api.herokuapp.com/api/v1/trips/6?end_date=2006&start_date=2021-11-02").
+            to_return(status: 200, body: "", headers: {})
+
+          json_response = File.read('spec/fixtures/trips/dashboard/trip_update_end_date.json')
+          stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/trips/6").
+            to_return(status: 200, body: json_response)
+
+          within "#travel-dates" do
+            fill_in :end_date, with: 2021-11-04
+            click_button 'Update start/end dates'
+          end
+
+          expect(page).to have_content("Start Date: 2021-11-02")
+          expect(page).to have_content("End Date: 2021-11-04")
+        end
+      end
+
       describe 'Weather' do
         #call on weather api facade
         it 'displays a weather forecast section' do
@@ -44,9 +85,13 @@ RSpec.describe 'Trips dashboard page' do
         it 'lists the trips accommodation records, which link to their show page' do
           json_response = File.read('spec/fixtures/trips/dashboard/trip_accommodation_new.json')
           stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/trips/6").
-          to_return(status: 200, body: json_response)
+            to_return(status: 200, body: json_response)
 
           visit trips_dashboard_path(6)
+
+          json_response = File.read('spec/fixtures/trips/dashboard/accommodation_show.json')
+          stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/trips/6/accommodations/1").
+            to_return(status: 200, body: json_response)
 
           within "#accommodations" do
             within "#accommodation-1" do
@@ -71,7 +116,7 @@ RSpec.describe 'Trips dashboard page' do
           end
         end
 
-        xit 'has a form to create new checklists' do
+        it 'has a form to create new checklists' do
           within "#checklists" do
             expect(page).to have_field(:category)
             expect(page).to have_button('Create Checklist')
@@ -80,13 +125,12 @@ RSpec.describe 'Trips dashboard page' do
 
         context 'when I fill in the checklist name field and click on the create checklist button' do
           it 'adds the created checklist to the list as a link' do
-            stub_request(:post, "https://travel-buddy-api.herokuapp.com/api/v1/trips/6/checklists").
-            with(body: "{\"category\":\"Personal Luggage\",\"trip_id\":\"6\"}",).
-            to_return(status: 201, body: "", headers: {})
+            stub_request(:post, "https://travel-buddy-api.herokuapp.com/api/v1/trips/6/checklists?category=Personal%20Luggage&trip_id=6").
+              to_return(status: 200)
 
             json_response = File.read('spec/fixtures/trips/dashboard/trip_checklist_new.json')
             stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/trips/6").
-            to_return(status: 200, body: json_response, headers: {})
+              to_return(status: 200, body: json_response)
 
             new_checklist = 'Personal Luggage'
 
@@ -106,7 +150,7 @@ RSpec.describe 'Trips dashboard page' do
             it 'redirects me to the checklist show page' do
               json_response = File.read('spec/fixtures/trips/dashboard/trip_checklist_new.json')
               stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/trips/6").
-              to_return(status: 200, body: json_response, headers: {})
+              to_return(status: 200, body: json_response)
 
               visit trips_dashboard_path(6)
 

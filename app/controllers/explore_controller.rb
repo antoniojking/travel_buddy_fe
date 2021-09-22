@@ -24,6 +24,5 @@ class ExploreController < ApplicationController
   end
 
   def show
-
   end
 end
