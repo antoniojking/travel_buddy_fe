@@ -152,6 +152,15 @@ RSpec.describe 'Trips dashboard page' do
               stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/trips/6").
               to_return(status: 200, body: json_response)
 
+              stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/trips/6/checklists/1").
+                with(
+                  headers: {
+                  'Accept'=>'*/*',
+                  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+                  'User-Agent'=>'Faraday v1.8.0'
+                  }).
+                to_return(status: 200, body: json_response, headers: {})
+
               visit trips_dashboard_path(6)
 
               within "#checklist-1" do
