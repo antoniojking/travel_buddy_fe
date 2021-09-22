@@ -21,17 +21,17 @@
   <% if params[:state] %>
     <% @state.each do |park| %>
     <p style="text-align:center;">
-      <%= link_to park[:attributes][:name], "/parks/#{park[:id]}" %>
+      <%= link_to park.name, "/parks/#{park.id}" %>
       <br>
-      <img src="<%= park[:attributes][:images][0][:url] %>", alt="<%= park[:attributes][:name] %> photo", style="max-width: 450px; max-height: 300px" >
+      <img src="<%= park.image %>", alt="<%= park.name %> photo", style="max-width: 450px; max-height: 300px" >
     </p>
     <% end %>
   <% elsif params[:activity] %>
     <% @activity.each do |park| %>
     <p style="text-align:center;">
-      <%= link_to park[:attributes][:name], "/parks/#{park[:id]}" %>
+      <%= link_to park.name, "/parks/#{park.id}" %>
       <br>
-      <img src="#", alt="<%= park[:attributes][:name] %> photo", style="max-width: 450px; max-height: 300px" >
+      <img src="#", alt="<%= park.name %> photo", style="max-width: 450px; max-height: 300px" >
     </p>
     <% end %>
   <% else %>

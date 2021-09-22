@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
-  resources 'explore', only: [:index, :show]
+  resources 'explore', only: [:index]
 
   get '/user_dashboard', to: 'users#show'
 
@@ -16,5 +16,5 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/parks/:park_code', to: 'parks#show'
+  get '/parks/:park_code', to: 'parks#show', as: 'parks_show'
 end
