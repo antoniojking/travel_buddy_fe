@@ -16,9 +16,8 @@ class Trips::AccommodationsController < ApplicationController
   end
 
   def destroy
-    #need to have @trip too from the TripFacade
-    Accommodation.delete_accommodations(params[:dashboard_id], params[:id])
+    AccommodationFacade.delete_accommodation(params[:dashboard_id], params[:id])
 
-    redirect_to trips_dashboard_path(trip)
+    redirect_to trips_dashboard_path(params[:dashboard_id])
   end
 end

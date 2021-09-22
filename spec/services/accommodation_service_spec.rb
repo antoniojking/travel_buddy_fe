@@ -59,5 +59,13 @@ RSpec.describe AccommodationService do
     expect(accommodation[:data][:attributes]).to have_key(:details)
   end
 
-  it 'can destroy'
+  it 'can destroyexisting accommodation with given params' do
+    json_response = File.read('spec/fixtures/accommodations/single_accommodation.json')
+    stub_request(:delete, 'https://travel-buddy-api.herokuapp.com/api/v1/trips/6/accommodations/7').to_return(status: 200, body: "")
+
+    accommodation = AccommodationService.delete_trip_accommodations(6, 7)
+
+    expect(accommodation.status).to be(200)
+    expect(accommodation.body).to eq("")
+  end
 end

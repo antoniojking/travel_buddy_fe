@@ -22,4 +22,8 @@ class AccommodationFacade
 
     Accommodation.new(json[:data])
   end
+
+  def self.delete_accommodation(trip_id, accommodation_id)
+    json = AccommodationService.delete_trip_accommodations(trip_id, accommodation_id)
+  end
 end
