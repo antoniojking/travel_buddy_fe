@@ -9,6 +9,14 @@ class ChecklistItemService
         req.body = item_params
       end
     end
+
+    def delete_item(trip_id, checklist_id, item_id)
+      response = conn.delete(
+        "/api/v1/trips/#{trip_id}/checklists/#{checklist_id}/checklist_items/#{item_id}"
+      ) do |req|
+        req.body = item_id
+      end
+    end
   end
 
   def self.conn
