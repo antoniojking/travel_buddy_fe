@@ -8,12 +8,6 @@ RSpec.describe "Checklist show page" do
       @checklist_id = 2
   
       stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/trips/#{@trip_id}/checklists/#{@checklist_id}").
-         with(
-           headers: {
-          'Accept'=>'*/*',
-          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-          'User-Agent'=>'Faraday v1.8.0'
-           }).
          to_return(status: 200, body: json_response)
   
       visit "/trips/dashboard/#{@trip_id}/checklist/#{@checklist_id}"
@@ -36,12 +30,6 @@ RSpec.describe "Checklist show page" do
       @item_id = 1
       
       stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/trips/#{@trip_id}/checklists/#{@checklist_id}").
-         with(
-           headers: {
-          'Accept'=>'*/*',
-          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-          'User-Agent'=>'Faraday v1.8.0'
-           }).
          to_return(status: 200, body: @json_response)
       
       visit "/trips/dashboard/#{@trip_id}/checklist/#{@checklist_id}"
@@ -51,23 +39,10 @@ RSpec.describe "Checklist show page" do
       updated_json_response = File.read('spec/fixtures/updated_checklist_show.json')
       
       stub_request(:patch, "https://travel-buddy-api.herokuapp.com/api/v1/trips/8/checklists/2/checklist_items/1").
-         with(
-           body: {"item_id"=>"1", "name"=>"Cheese Doodles"},
-           headers: {
-          'Accept'=>'*/*',
-          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-          'Content-Type'=>'application/x-www-form-urlencoded',
-          'User-Agent'=>'Faraday v1.8.0'
-           }).
-         to_return(status: 200, body: updated_json_response, headers: {})
+         with(body: {"item_id"=>"1", "name"=>"Cheese Doodles"}).
+            to_return(status: 200, body: updated_json_response)
 
       stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/trips/#{@trip_id}/checklists/#{@checklist_id}").
-         with(
-           headers: {
-          'Accept'=>'*/*',
-          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-          'User-Agent'=>'Faraday v1.8.0'
-           }).
          to_return(status: 200, body: updated_json_response)
 
       within("#items") do
@@ -84,17 +59,19 @@ RSpec.describe "Checklist show page" do
       empty_checklist_show = File.read('spec/fixtures/empty_checklist_show.json')
 
       stub_request(:delete, "https://travel-buddy-api.herokuapp.com/api/v1/trips/#{@trip_id}/checklists/#{@checklist_id}/checklist_items/#{@item_id}").
-         with(
-           headers: {
-          'Accept'=>'*/*',
-          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-          'User-Agent'=>'Faraday v1.8.0'
-           }).
          to_return(status: 200, body: empty_checklist_show)
       
+      stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/trips/#{@trip_id}/checklists/#{@checklist_id}").
+         to_return(status: 200, body: empty_checklist_show)
+      
+      expect(page).to have_field(:name, with: 'Cheez-its')
+
       within("#items") do
         click_on "Delete Item"
       end
+
+      expect(current_path).to eq("/trips/dashboard/#{@trip_id}/checklist/#{@checklist_id}")
+      expect(page).to_not have_field(:name, with: 'Cheez-its')
     end
   end
 end

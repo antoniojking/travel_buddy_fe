@@ -1,0 +1,18 @@
+{
+    "data": [
+        {
+            "id": "3113",
+            "type": "User Email",
+            "attributes": {
+                "email": "lezlie@langosh.com"
+            }
+        },
+        {
+            "id": "20",
+            "type": "User Email",
+            "attributes": {
+                "email": "test1@test.com"
+            }
+        }
+    ]
+}

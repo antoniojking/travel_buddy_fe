@@ -1,0 +1,38 @@
+{"data":
+  {"id":"3113",
+   "type":"user",
+   "attributes":
+    {"email":"friend@friend.com",
+     "spotify_id":"asljkbadskjfba",
+     "token":"alskjfhadlskjfh9823y489",
+     "refresh_token":"2398rcbjwiuf834hf",
+     "current_trips":
+      [],
+     "upcoming_trips":
+      [{"id":2065,
+        "start_date":"2021-12-18T00:00:00.000Z",
+        "end_date":"2021-12-30T00:00:00.000Z",
+        "park_code":"grte",
+        "name":"Teton National Park",
+        "user_id":3112,
+        "created_at":"2021-09-21T22:10:11.712Z",
+        "updated_at":"2021-09-21T22:10:11.712Z",
+        "park_name":"Annapurna Himalaya"}],
+     "past_trips":
+      [{"id":2066,
+        "start_date":"2021-04-18T00:00:00.000Z",
+        "end_date":"2021-05-30T00:00:00.000Z",
+        "park_code":"grte",
+        "name":"Teton National Park",
+        "user_id":3112,
+        "created_at":"2021-09-21T22:10:11.714Z",
+        "updated_at":"2021-09-21T22:10:11.714Z",
+        "park_name":"Yengisogat Karakoram"}],
+     "friends":
+      [{"id":3113,
+        "token":"alskjfhadlskjfh9823y489",
+        "refresh_token":"2398rcbjwiuf834hf",
+        "email":"lezlie@langosh.com",
+        "created_at":"2021-09-21T22:10:11.718Z",
+        "updated_at":"2021-09-21T22:10:11.718Z",
+        "spotify_id":"asljkbadskjfba"}]}}}

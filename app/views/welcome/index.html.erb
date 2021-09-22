@@ -1,3 +1,10 @@
-<h1>Welcome Page/ Login Page</h1>
+<figure class="text-center">
+  <blockquote class="blockquote">
+    <h3 class="display-5">Welcome Page/ Login Page</h3>
+  </blockquote>
+</figure>
 
-<%= link_to 'Sign in with Spotify', '/auth/spotify' %>
+<button type="button" onclick="location.href='/auth/spotify'" class="btn btn-outline-success login_button">
+  <%= image_tag('spotify.svg', "data-svg-fallback" => image_path('/app/assets/images/spotify.svg'), :align=> "left") %>
+  Sign in with Spotify
+</button>
