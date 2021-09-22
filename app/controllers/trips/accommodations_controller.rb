@@ -4,19 +4,31 @@ class Trips::AccommodationsController < ApplicationController
     @accommodation = AccommodationFacade.create_accommodation_by_id(@trip_id, params[:id])
   end
 
+  def new
+    @trip_id = params[:dashboard_id]
+  end
+
+  def create
+    @trip_id = params[:dashboard_id]
+    @accommodation = AccommodationFacade.create_new_accommodation(@trip_id, params[:name], params[:location], params[:details])
+
+    redirect_to trips_dashboard_path(@trip_id)
+  end
+
   def edit
-    #need to have @trip too from the TripFacade
-    @accommodation = AccommodationFacade.create_accommodation_by_id(params[:dashboard_id], params[:id])
+    @trip_id = params[:dashboard_id]
+    @accommodation = AccommodationFacade.create_accommodation_by_id(@trip_id, params[:id])
   end
 
   def update
-    accommodation = AccommodationFacade.create_accommodation_by_id(params[:dashboard_id], params[:id])
+    accommodation = AccommodationFacade.update_accommodation(params[:dashboard_id], params[:id], params[:name], params[:location], params[:details])
+
+    redirect_to trips_dashboard_accommodation_path(params[:dashboard_id], params[:id])
   end
 
   def destroy
-    #need to have @trip too from the TripFacade
-    Accommodation.delete_accommodations(params[:dashboard_id], params[:id])
+    AccommodationFacade.delete_accommodation(params[:dashboard_id], params[:id])
 
-    redirect_to trips_dashboard_path(trip)
+    redirect_to trips_dashboard_path(params[:dashboard_id])
   end
 end
