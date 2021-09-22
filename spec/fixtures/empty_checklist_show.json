@@ -1,0 +1,12 @@
+{
+  "data": {
+    "id": "2",
+    "type": "checklist",
+    "attributes": {
+      "category": "Snacks",
+      "trip_id": 8,
+      "item_count": 3,
+      "items": []
+    }
+  }
+}
