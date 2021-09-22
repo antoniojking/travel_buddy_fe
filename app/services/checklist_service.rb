@@ -1,15 +1,14 @@
 class ChecklistService
   class << self
-    def by_trip(trip_id)
-      response = conn.get("/api/v1/trips/#{trip_id}/checklists")
-      JSON.parse(response.body, symbolize_names: true)
-    end
+    # def by_trip(trip_id)
+    #   response = conn.get("/api/v1/trips/#{trip_id}/checklists")
+    #   JSON.parse(response.body, symbolize_names: true)
+    # end
 
     def trip_checklist_new(trip_id, category)
-      new_checklist = { category: category, trip_id: trip_id }
-
       response = conn.post("/api/v1/trips/#{trip_id}/checklists") do |req|
-        req.body = new_checklist.to_json
+        req.params['category'] = category
+        req.params['trip_id'] = trip_id
       end
     end
   end

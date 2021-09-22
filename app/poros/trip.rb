@@ -21,4 +21,9 @@ class Trip
     @travel_buddies = data[:attributes][:travel_buddies]
     @host =           data[:attributes][:user_id]
   end
+
+  def format_date(date_attribute)
+    return 'TBD' unless !date_attribute.nil?
+    date_attribute.to_time.strftime('%Y-%m-%d')
+  end
 end
