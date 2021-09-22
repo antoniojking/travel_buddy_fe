@@ -11,12 +11,12 @@ class AccommodationService < BaseService
     JSON.parse(response.body, symbolize_names: true)
   end
 
-  def self.create_trip_accommodations(trip_id, name, location, description)
+  def self.create_trip_accommodations(trip_id, name, location, details)
     response = conn.post("/api/v1/trips/#{trip_id}/accommodations") do |req|
       req.headers['CONTENT_TYPE'] = 'application/json'
       req.params['name'] = name
       req.params['location'] = location
-      req.params['description'] = description
+      req.params['details'] = details
     end
 
     JSON.parse(response.body, symbolize_names: true)
@@ -26,12 +26,12 @@ class AccommodationService < BaseService
     conn.delete("/api/v1/trips/#{trip_id}/accommodations/#{accommodation_id}")
   end
 
-  def self.update_trip_accommodations(trip_id, accommodation_id, name, location, description)
-    response = conn.put("/api/v1/trips/#{trip_id}/accommodations/#{accommodation_id}") do |req|
+  def self.update_trip_accommodations(trip_id, accommodation_id, name, location, details)
+    response = conn.patch("/api/v1/trips/#{trip_id}/accommodations/#{accommodation_id}") do |req|
       req.headers['CONTENT_TYPE'] = 'application/json'
       req.params['name'] = name
       req.params['location'] = location
-      req.params['description'] = description
+      req.params['details'] = details
     end
 
     JSON.parse(response.body, symbolize_names: true)
