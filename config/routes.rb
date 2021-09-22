@@ -16,5 +16,5 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/parks/:park_code', to: 'parks#show'
+  get '/parks/:park_code', to: 'parks#show', as: 'parks_show'
 end
