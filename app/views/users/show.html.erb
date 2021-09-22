@@ -1,21 +1,44 @@
-<h1>Welcome User!</h1>
+<h1>Welcome <%= current_user.email %>!</h1>
 
-<p><%= link_to 'Notifications', '#' %></p>
-
-<p><%= button_to 'Explore National Parks', '#' %></p>
+<p><%= button_to 'Explore National Parks', '/explore', method: :get %></p>
 
 <div id="current_trip">
   <h2>Current Trip</h2>
+  <% current_user.current_trips.each do |trip| %>
+  <div id="current-trip-<%= trip[:id] %>">
+    <p><%= link_to trip[:name], "/trips/dashboard/#{trip[:id]}" %></p>
+  </div>
+    <% end %>
 </div>
 
 <div id="upcoming_trips">
   <h2>Upcoming Trips</h2>
+  <% current_user.upcoming_trips.each do |trip| %>
+  <div id="upcoming-trip-<%= trip[:id] %>">
+    <p><%= link_to trip[:name], "/trips/dashboard/#{trip[:id]}" %></p>
+  </div>
+    <% end %>
 </div>
 
 <div id="past_trips">
   <h2>Past Trips</h2>
+  <% current_user.past_trips.each do |trip| %>
+  <div id="past-trip-<%= trip[:id] %>">
+    <p><%= link_to trip[:name], "/trips/dashboard/#{trip[:id]}" %></p>
+  </div>
+    <% end %>
 </div>
 
-<div id="travel_buddies">
-  <h2>Travel Buddies</h2>
+<div id="friends">
+  <h2>Friends</h2>
+  <% @friends.each do |friend| %>
+    <p><%= friend.email %></p>
+  <% end %>
 </div>
+
+<%= form_with url: '/friendships', method: :post, local: true do |f| %>
+  <%= f.label 'Add Friends' %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.text_field :friend, placeholder: 'Enter Friends Email' %>
+  <%= f.submit 'Submit' %>
+<% end %>

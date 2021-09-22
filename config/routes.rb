@@ -19,5 +19,7 @@ Rails.application.routes.draw do
     end
   end
 
+  post '/friendships', to: 'friendships#create'
+
   get '/parks/:park_code', to: 'parks#show', as: 'parks_show'
 end
