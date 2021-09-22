@@ -19,6 +19,10 @@ RSpec.describe 'Show Page' do
   end
 
   it 'has a link to create a new trip to that park' do
-    expect(page).to have_content("Create a New Trip to This Park")
+    expect(page).to have_content("Create A Trip To This Park!")
+
+    click_link('Create A Trip To This Park!')
+
+    expect(current_path).to eq(trips_dashboard_index)
   end
 end

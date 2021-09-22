@@ -4,7 +4,16 @@ class TripService
       response = conn.get("/api/v1/trips/#{trip_id}")
       JSON.parse(response.body, symbolize_names: true)
     end
-
+    
+    def new_trip(park_code, park_name, user_id)
+      response = conn.post("/api/v1/trips?") do |req|
+        req.params['user_id']   = user_id
+        req.params['park_code'] = park_code
+        req.params['park_name'] = park_name
+      end
+      JSON.parse(response.body, symbolize_names: true)
+    end
+    
     def patch_trip(trip_id, update_info)
       conn.patch("/api/v1/trips/#{trip_id}") do |req|
         req.params['start_date'] = update_info[:start_date] unless update_info[:start_date].empty?
