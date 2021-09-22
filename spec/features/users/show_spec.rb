@@ -137,7 +137,7 @@ RSpec.describe 'User dashboard page' do
           stub_request(:post, "https://travel-buddy-api.herokuapp.com/api/v1/users/3112/friendships?email=test@test.com").to_return(status: 200, body: json_response6, headers: {})
 
           json_response7 = File.read('spec/fixtures/user/another_user.json')
-         stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/users/20").to_return(status: 200, body: json_response7, headers: {})
+          stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/users/20").to_return(status: 200, body: json_response7, headers: {})
 
           user = UserFacade.current_user_info(3112)
           friend = UserFacade.current_user_info(20)
@@ -152,7 +152,7 @@ RSpec.describe 'User dashboard page' do
 
           fill_in :friend, with: friend.email
           click_on 'Submit'
-          save_and_open_page
+
           expect(current_path).to eq('/user_dashboard')
           within('#friends') do
             expect(page).to have_content(friend.email)
