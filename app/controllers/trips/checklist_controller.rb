@@ -1,8 +1,8 @@
 class Trips::ChecklistController < ApplicationController
   def show
-    trip_id = params[:dashboard_id]
-    checklist_id = params[:id]
-    @checklist = ChecklistFacade.grab_checklist(trip_id, checklist_id)
+    @trip_id = params[:dashboard_id]
+    @checklist_id = params[:id]
+    @checklist = ChecklistFacade.grab_checklist(@trip_id, @checklist_id)
   end
 
   def create

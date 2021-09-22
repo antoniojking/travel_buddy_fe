@@ -21,7 +21,6 @@ class ChecklistService
   end
 
   def self.conn
-    Faraday.new(url: 'https://travel-buddy-api.herokuapp.com') do |req|
-    end
+    Faraday.new(url: 'https://travel-buddy-api.herokuapp.com')
   end
 end
