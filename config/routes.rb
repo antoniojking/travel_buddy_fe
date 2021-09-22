@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
-  resources 'explore', only: [:index, :show]
+  resources 'explore', only: [:index]
 
   get '/user_dashboard', to: 'users#show'
 
