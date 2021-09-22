@@ -9,6 +9,9 @@
           <%= f.text_field :name, value: "#{item.name}" %>
           <%= f.submit "Edit Name" %>
         <% end %>
+        <%= form_with url: "/trips/dashboard/#{@trip_id}/checklist/#{@checklist_id}/checklist_items/#{item.id}", method: :delete, local: true do |f| %>
+          <%= f.submit "Delete Item" %>
+        <% end %>
       </li>
       <br>
     <% end %>
