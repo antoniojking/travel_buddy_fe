@@ -31,17 +31,13 @@ RSpec.describe 'User dashboard page' do
         expect(page).to have_content("Welcome #{@user.email}!")
       end
 
-      it 'displays a button to explore national parks' do
-        expect(page).to have_button("Explore National Parks")
-      end
+      describe 'when I click on the explore national parks button' do
+        before { click_button('Explore National Parks') }
 
-      # context 'when I click on the explore national parks button' do
-      #   before { click_button('Explore National Parks') }
-      #
-      #   it 'redirects me to the explore page' do
-      #     expect(current_path).to eq('/explore')
-      #   end
-      # end
+        xit 'redirects me to the explore page' do
+          expect(current_path).to eq('/explore')
+        end
+      end
 
       it 'displays a current trip section' do
         within "#current_trip" do
@@ -93,7 +89,7 @@ RSpec.describe 'User dashboard page' do
       it 'displays a friends section' do
         within "#friends" do
           expect(page).to have_content("Friends")
-          
+
           @user.friends.each do |friend|
             expect(page).to have_content(friend[:email])
           end
