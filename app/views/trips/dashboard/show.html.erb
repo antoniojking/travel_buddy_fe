@@ -1,7 +1,19 @@
 <h1><%= @trip.name %></h1>
 
 <h3><%= @trip.park_name %></h3>
+
+<section id ="travel-dates">
 <h3>Travel Dates</h3>
+  <%= form_with url: trips_dashboard_path(@trip.id), method: :patch, local: true do |f| %>
+    <%= f.label :start_date, "Start Date:" %>
+    <%= @trip.format_date(@trip.start_date) %>
+    <%= f.date_field :start_date, { value: @trip.format_date(@trip.start_date) } %><br><br>
+    <%= f.label :end_date, "End Date:" %>
+    <%= @trip.format_date(@trip.end_date) %>
+    <%= f.date_field :end_date, { value: @trip.format_date(@trip.end_date) } %><br><br>
+    <%= f.submit "Update start/end dates" %><br><br>
+<% end %>
+</section>
 
 <div id="weather">
   <h2>Weather Forecast</h2>
@@ -15,11 +27,6 @@
       <li id="accommodation-<%= accommodation[:id] %>"><%= link_to accommodation[:name], trips_dashboard_accommodation_path(@trip_id, accommodation[:id]) %></li>
     <% end %>
   </ol
-</div>
-
-<div id="activities">
-  <h2>Activities</h2>
-  <p><%= button_to 'Edit', '#' %></p>
 </div>
 
 <div id="checklists">
@@ -36,10 +43,6 @@
       <li id="checklist-<%= index += 1 %>"><%= link_to checklist[:category], trips_dashboard_checklist_path(@trip_id, checklist[:id]) %></li>
     <% end %>
   </ol
-</div>
-
-<div id="chat">
-  <h2>Message Board/Chat</h2>
 </div>
 
 <div id="friends_joining">
