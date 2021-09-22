@@ -12,10 +12,15 @@ class ChecklistService
         req.body = new_checklist.to_json
       end
     end
+
+    def single_checklist(trip_id, checklist_id)
+      response = conn.get("/api/v1/trips/#{trip_id}/checklists/#{checklist_id}")
+
+      JSON.parse(response.body, symbolize_names: true)
+    end
   end
 
   def self.conn
-    Faraday.new(url: 'https://travel-buddy-api.herokuapp.com') do |req|
-    end
+    Faraday.new(url: 'https://travel-buddy-api.herokuapp.com')
   end
 end

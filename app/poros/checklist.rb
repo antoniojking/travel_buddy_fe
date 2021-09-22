@@ -1,11 +1,19 @@
 class Checklist
   attr_reader :id,
-              :name,
-              :item_count
+              :category,
+              :item_count,
+              :items
 
   def initialize(data)
     @id         = data[:id]
     @category   = data[:attributes][:category]
     @item_count = data[:attributes][:item_count]
+    @items      = data[:attributes][:items]
+  end
+
+  def item_list
+    @items.map do |item|
+      ChecklistItem.new(item)
+    end
   end
 end
