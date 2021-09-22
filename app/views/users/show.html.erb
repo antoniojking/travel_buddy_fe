@@ -35,3 +35,9 @@
   <p><%= friend[:email] %></p>
   <% end %>
 </div>
+
+<%= form_with url: '/friends/new', method: :post do |f| %>
+  <%= f.label 'Add Friends' %>
+  <%= f.text_field :friends, placeholder: 'Enter Friends Email' %>
+  <%= f.submit 'Submit' %>
+<% end %>

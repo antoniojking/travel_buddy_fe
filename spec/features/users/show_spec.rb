@@ -7,6 +7,9 @@ RSpec.describe 'User dashboard page' do
       json_response = File.read('spec/fixtures/user/user_info.json')
       stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/users/3112").to_return(status: 200, body: json_response, headers: {})
 
+      json_response = File.read('spec/fixtures/user/friend_info.json')
+      stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/users/3113").to_return(status: 200, body: json_response, headers: {})
+
       json_response2 = File.read('spec/fixtures/trips/dashboard/trip_new.json')
       stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/trips/2064").to_return(status: 200, body: json_response2, headers: {})
 
@@ -18,6 +21,7 @@ RSpec.describe 'User dashboard page' do
       stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/trips/2066").to_return(status: 200, body: json_response4, headers: {})
 
       @user = UserFacade.current_user_info(3112)
+      @friend = UserFacade.current_user_info(3113)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
 
@@ -93,6 +97,19 @@ RSpec.describe 'User dashboard page' do
           @user.friends.each do |friend|
             expect(page).to have_content(friend[:email])
           end
+        end
+      end
+
+      it 'displays a section to add friends' do
+        expect(page).to have_field(:friends)
+        expect(page).to_not have_content(@friend.email)
+
+        fill_in :friends, with: @friend.email
+        click_on 'Submit'
+
+        expect(current_path).to eq('/user_dashboard')
+        within('#friends') do
+          expect(page).to have_content(@friend.email)
         end
       end
     end
