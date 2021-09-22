@@ -28,4 +28,32 @@ require 'rails_helper'
      expect(friendship[:data][:attributes]).to have_key(:friend_id)
      expect(friendship[:data][:attributes][:friend_id].class).to eq(Integer)
    end
+
+   it 'can get a users friendship information' do
+     json_response = File.read('spec/fixtures/user/user_info.json')
+
+     stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/users/3112").to_return(status: 200, body: json_response, headers: {})
+
+     json_response2 = File.read('spec/fixtures/user/friend_info.json')
+
+     stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/users/3113").to_return(status: 200, body: json_response2, headers: {})
+
+     json_response3 = File.read('spec/fixtures/user/friendship.json')
+     stub_request(:post, "https://travel-buddy-api.herokuapp.com/api/v1/users/3112/friendships?email=friend@friend.com").to_return(status: 200, body: json_response3, headers: {})
+
+     json_response4 = File.read('spec/fixtures/user/friendships.json')
+     stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/users/3112/friendships").to_return(status: 200, body: json_response4, headers: {})
+
+     user = UserFacade.current_user_info(3112)
+     friend = UserFacade.current_user_info(3113)
+
+     friendship = FriendshipService.get_user_friends(user.id)
+
+     expect(friendship).to have_key(:data)
+     expect(friendship[:data][0]).to have_key(:id)
+     expect(friendship[:data][0]).to have_key(:attributes)
+     expect(friendship[:data][0][:attributes].class).to eq(Hash)
+     expect(friendship[:data][0][:attributes]).to have_key(:email)
+     expect(friendship[:data][0][:attributes][:email].class).to eq(String)
+   end
  end

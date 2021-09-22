@@ -31,13 +31,14 @@
 
 <div id="friends">
   <h2>Friends</h2>
-  <% current_user.friends.each do |friend| %>
+  <% @friends.each do |friend| %>
   <p><%= friend[:email] %></p>
   <% end %>
 </div>
 
 <%= form_with url: '/friendships/new', method: :post do |f| %>
   <%= f.label 'Add Friends' %>
-  <%= f.text_field :friends, placeholder: 'Enter Friends Email' %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.text_field :friend, placeholder: 'Enter Friends Email' %>
   <%= f.submit 'Submit' %>
 <% end %>
