@@ -46,9 +46,9 @@ require 'rails_helper'
 
      user = UserFacade.current_user_info(3112)
 
-     friendship = Friendshipfacade.create_user_friends(user.id)
+     friendships = FriendshipFacade.create_user_friends(user.id)
 
-     friendship[.each do |friend|
+     friendships.each do |friend|
        expect(friend).to be_an_instance_of(Friend)
      end
    end
