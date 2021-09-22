@@ -36,7 +36,7 @@
   <% end %>
 </div>
 
-<%= form_with url: '/friendships/new', method: :post do |f| %>
+<%= form_with url: '/friendships', method: :post, local: true do |f| %>
   <%= f.label 'Add Friends' %>
   <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.text_field :friend, placeholder: 'Enter Friends Email' %>

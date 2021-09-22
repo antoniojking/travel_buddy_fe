@@ -129,18 +129,16 @@ RSpec.describe 'User dashboard page' do
           json_response = File.read('spec/fixtures/user/user_info.json')
           stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/users/3112").to_return(status: 200, body: json_response, headers: {})
 
-          json_response1 = File.read('spec/fixtures/user/friend_info.json')
-          stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/users/3113").to_return(status: 200, body: json_response1, headers: {})
+          json_response2 = File.read('spec/fixtures/user/friendship.json')
+          stub_request(:post, "https://travel-buddy-api.herokuapp.com/api/v1/users/3112/friendships?email=test1@test.com").to_return(status: 200, body: json_response2, headers: {})
 
-          json_response6 = File.read('spec/fixtures/user/friendship.json')
 
-          stub_request(:post, "https://travel-buddy-api.herokuapp.com/api/v1/users/3112/friendships?email=test@test.com").to_return(status: 200, body: json_response6, headers: {})
+          json_response6 = File.read('spec/fixtures/user/new_friendship.json')
 
-          json_response7 = File.read('spec/fixtures/user/another_user.json')
-          stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/users/20").to_return(status: 200, body: json_response7, headers: {})
+          stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/users/3112/friendships").to_return(status: 200, body: json_response6, headers: {})
 
           user = UserFacade.current_user_info(3112)
-          friend = UserFacade.current_user_info(20)
+
 
           allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
@@ -148,14 +146,12 @@ RSpec.describe 'User dashboard page' do
 
           expect(page).to have_field(:friend)
 
-          expect(page).to_not have_content(friend.email)
-
-          fill_in :friend, with: friend.email
+          fill_in :friend, with: 'test1@test.com'
           click_on 'Submit'
 
           expect(current_path).to eq('/user_dashboard')
           within('#friends') do
-            expect(page).to have_content(friend.email)
+            expect(page).to have_content('test1@test.com')
           end
         end
       end
