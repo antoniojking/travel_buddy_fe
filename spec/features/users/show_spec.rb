@@ -62,7 +62,7 @@ RSpec.describe 'User dashboard page' do
       describe 'when I click on the explore national parks button' do
         before { click_button('Explore National Parks') }
 
-        xit 'redirects me to the explore page' do
+        it 'redirects me to the explore page' do
           expect(current_path).to eq('/explore')
         end
       end

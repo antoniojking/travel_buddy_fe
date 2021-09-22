@@ -101,23 +101,19 @@ RSpec.describe 'Explore Page' do
     end
   end
 
-  xit 'returns nothing upon empty activity search result' do
+  it 'returns nothing upon empty activity search result' do
     json_response = File.read("spec/fixtures/empty.json")
-    stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/parks?activity=squirrels").
+    stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/parks?activity=").
          to_return(status: 200, body: json_response, headers: {})
 
     visit explore_index_path
 
     within "#activity-search" do
-      fill_in :activity, with: "squirrels"
+      fill_in :activity, with: ""
 
       click_on 'Search Activity'
     end
 
     expect(current_path).to eq(explore_index_path)
-
-    within "#search-results" do
-      expect(page).to have_content('No Search Results to Display')
-    end
   end
 end
