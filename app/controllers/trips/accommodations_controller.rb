@@ -4,6 +4,17 @@ class Trips::AccommodationsController < ApplicationController
     @accommodation = AccommodationFacade.create_accommodation_by_id(@trip_id, params[:id])
   end
 
+  def new
+    @trip_id = params[:dashboard_id]
+  end
+
+  def create
+    @trip_id = params[:dashboard_id]
+    @accommodation = AccommodationFacade.create_new_accommodation(@trip_id, params[:name], params[:location], params[:details])
+
+    redirect_to trips_dashboard_path(@trip_id)
+  end
+
   def edit
     @trip_id = params[:dashboard_id]
     @accommodation = AccommodationFacade.create_accommodation_by_id(@trip_id, params[:id])

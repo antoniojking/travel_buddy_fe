@@ -12,10 +12,11 @@ class AccommodationFacade
     Accommodation.new(json[:data])
   end
 
-  # def self.create_accommodation(trip_id, name, location, description)
-  #   json = AccommodationService.create_trip_accommodation(trip_id, name, location, description)
-  #   User.new(json)
-  # end
+  def self.create_new_accommodation(trip_id, name, location, description)
+    json = AccommodationService.create_trip_accommodation(trip_id, name, location, description)
+    
+    Accommodation.new(json[:data])
+  end
 
   def self.update_accommodation(trip_id, accommodation_id, name, location, details)
     json = AccommodationService.update_trip_accommodations(trip_id, accommodation_id, name, location, details)

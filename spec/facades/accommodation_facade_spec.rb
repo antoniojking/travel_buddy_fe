@@ -26,7 +26,21 @@ RSpec.describe AccommodationFacade do
       expect(accommodation.details).to eq('Whiteboards are white because Chuck Norris scared them that way.')
     end
 
-    it 'can create a new accommodation for a trip'
+    it 'can create a new accommodation for a trip' do
+      json_response = File.read('spec/fixtures/accommodations/create_accommodation.json')
+      stub_request(:post, 'https://travel-buddy-api.herokuapp.com/api/v1/trips/6/accommodations?name=Camp 4&location=Yosemite Valley&details=Pitch your test behind the large boulder').to_return(status: 200, body: json_response)
+
+      name = 'Camp 4'
+      location = 'Yosemite Valley'
+      details = 'Pitch your test behind the large boulder'
+
+      accommodation = AccommodationFacade.create_new_accommodation(6, name, location, details)
+
+      expect(accommodation.name).to eq('Camp 4')
+      expect(accommodation.location).to eq('Yosemite Valley')
+      expect(accommodation.details).to eq('Pitch your test behind the large boulder')
+
+    end
 
     it 'can update an existing accommodation' do
       json_response = File.read('spec/fixtures/accommodations/update_accommodation.json')
