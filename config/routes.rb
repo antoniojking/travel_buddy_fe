@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   namespace :trips do
     resources :dashboard, only: [:show] do
       resources :checklist, only: [:show, :create] do
-        resources :checklist_items
+        resources :checklist_items, only: [:update, :destroy]
       end
       resources :accommodations
     end

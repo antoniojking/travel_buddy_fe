@@ -61,9 +61,17 @@ RSpec.describe "Checklist show page" do
       stub_request(:delete, "https://travel-buddy-api.herokuapp.com/api/v1/trips/#{@trip_id}/checklists/#{@checklist_id}/checklist_items/#{@item_id}").
          to_return(status: 200, body: empty_checklist_show)
       
+      stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/trips/#{@trip_id}/checklists/#{@checklist_id}").
+         to_return(status: 200, body: empty_checklist_show)
+      
+      expect(page).to have_field(:name, with: 'Cheez-its')
+
       within("#items") do
         click_on "Delete Item"
       end
+
+      expect(current_path).to eq("/trips/dashboard/#{@trip_id}/checklist/#{@checklist_id}")
+      expect(page).to_not have_field(:name, with: 'Cheez-its')
     end
   end
 end
