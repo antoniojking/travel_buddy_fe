@@ -6,6 +6,13 @@
             "attributes": {
                 "email": "lezlie@langosh.com"
             }
+        },
+        {
+            "id": "20",
+            "type": "User Email",
+            "attributes": {
+                "email": "test@test.com"
+            }
         }
     ]
 }
