@@ -50,14 +50,25 @@ RSpec.describe "Checklist show page" do
     it 'can edit item names from list' do
       updated_json_response = File.read('spec/fixtures/updated_checklist_show.json')
       
-      stub_request(:patch, "https://travel-buddy-api.herokuapp.com/api/v1/trips/#{@trip_id}/checklists/#{@checklist_id}/checklist_items/#{@item_id}").
+      stub_request(:patch, "https://travel-buddy-api.herokuapp.com/api/v1/trips/8/checklists/2/checklist_items/1").
+         with(
+           body: {"item_id"=>"1", "name"=>"Cheese Doodles"},
+           headers: {
+          'Accept'=>'*/*',
+          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+          'Content-Type'=>'application/x-www-form-urlencoded',
+          'User-Agent'=>'Faraday v1.8.0'
+           }).
+         to_return(status: 200, body: updated_json_response, headers: {})
+
+      stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/trips/#{@trip_id}/checklists/#{@checklist_id}").
          with(
            headers: {
           'Accept'=>'*/*',
           'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
           'User-Agent'=>'Faraday v1.8.0'
            }).
-         to_return(status: 204, body: updated_json_response)
+         to_return(status: 200, body: updated_json_response)
 
       within("#items") do
         element = find_field(:name, with: 'Cheez-its')
