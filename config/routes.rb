@@ -18,5 +18,5 @@ Rails.application.routes.draw do
 
   get '/parks/:park_code', to: 'parks#show'
 
-  post '/friends/new', to: 'friends#create'
+  post '/friendships/new', to: 'friends#create'
 end
