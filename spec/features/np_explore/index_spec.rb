@@ -46,6 +46,9 @@ RSpec.describe 'Explore Page' do
       to_return(status: 200, body: json_response, headers: {})
     data = JSON.parse(json_response, symbolize_names: true)
 
+    stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/parks/colm").
+      to_return(status: 200, body: json_response, headers: {})
+
     visit explore_index_path
 
     within "#state-search" do
@@ -58,13 +61,13 @@ RSpec.describe 'Explore Page' do
 
     within "#search-results" do
       expect(page).to have_link("Bent's Old Fort National Historic Site")
-      expect(page).to have_link('Colorado National Monument')
-      expect(page).to have_link('Florissant Fossil Beds National Monument')
+      expect(page).to have_link("Colorado National Monument")
+      expect(page).to have_link("Florissant Fossil Beds National Monument")
+
+      click_link('Colorado National Monument')
+
+      expect(current_path).to eq("/parks/#{data[:data][3][:id]}")
     end
-
-    click_link('Colorado National Monument')
-
-    expect(current_path).to eq(explore_path(data[:data][3][:id]))
   end
 
   it 'returns a list of links for parks by activity upon search' do
@@ -73,6 +76,10 @@ RSpec.describe 'Explore Page' do
       to_return(status: 200, body: json_response, headers: {})
     data = JSON.parse(json_response, symbolize_names: true)
 
+    json_response3 = File.read("spec/fixtures/tb_be_park_acad.json")
+    stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/parks/acad").
+      to_return(status: 200, body: json_response3, headers: {})
+
     visit explore_index_path
 
     within "#activity-search" do
@@ -80,13 +87,37 @@ RSpec.describe 'Explore Page' do
 
       click_on 'Search Activity'
     end
-    
+
     expect(current_path).to eq(explore_index_path)
 
     within "#search-results" do
       expect(page).to have_link('Acadia National Park')
       expect(page).to have_link('Alagnak Wild River')
       expect(page).to have_link('Ala Kahakai National Historic Trail')
+
+      click_link('Acadia National Park')
+
+      expect(current_path).to eq("/parks/#{data[:data][0][:id]}")
+    end
+  end
+
+  xit 'returns nothing upon empty activity search result' do
+    json_response = File.read("spec/fixtures/empty.json")
+    stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/parks?activity=squirrels").
+         to_return(status: 200, body: json_response, headers: {})
+
+    visit explore_index_path
+
+    within "#activity-search" do
+      fill_in :activity, with: "squirrels"
+
+      click_on 'Search Activity'
+    end
+
+    expect(current_path).to eq(explore_index_path)
+
+    within "#search-results" do
+      expect(page).to have_content('No Search Results to Display')
     end
   end
 end

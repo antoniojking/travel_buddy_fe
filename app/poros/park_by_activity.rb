@@ -1,12 +1,9 @@
 class ParkByActivity
-  attr_reader :name, 
-              :parkcode,
-              :states,
-              :url
+  attr_reader :id,
+              :name
+
   def initialize(data)
-    @name           = data[:fullname]
-    @parkcode       = data[:parkCode]
-    @states         = data[:states]
-    @url            = data[:url]
-  end 
-end 
+    @id   = data[:id]
+    @name = data[:attributes][:name]
+  end
+end
