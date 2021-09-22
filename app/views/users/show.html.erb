@@ -1,6 +1,6 @@
 <h1>Welcome <%= current_user.email %>!</h1>
 
-<p><%= button_to 'Explore National Parks', '#' %></p>
+<p><%= button_to 'Explore National Parks', '/explore', method: :get %></p>
 
 <div id="current_trip">
   <h2>Current Trip</h2>
