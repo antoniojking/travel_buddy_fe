@@ -37,7 +37,26 @@ RSpec.describe AccommodationService do
     expect(accommodation[:data][:attributes]).to have_key(:location)
     expect(accommodation[:data][:attributes]).to have_key(:details)
   end
-  it 'can create'
+
+  it 'can create a new accommodation for a trip' do
+    json_response = File.read('spec/fixtures/accommodations/create_accommodation.json')
+    stub_request(:post, 'https://travel-buddy-api.herokuapp.com/api/v1/trips/6/accommodations?name=Camp 4&location=Yosemite Valley&details=Pitch your test behind the large boulder').to_return(status: 200, body: json_response)
+
+    name = 'Camp 4'
+    location = 'Yosemite Valley'
+    details = 'Pitch your test behind the large boulder'
+
+    accommodation = AccommodationService.create_trip_accommodation(6, name, location, details)
+
+    expect(accommodation[:data]).to be_a(Hash)
+    expect(accommodation[:data]).to have_key(:id)
+    expect(accommodation[:data]).to have_key(:type)
+    expect(accommodation[:data]).to have_key(:attributes)
+    expect(accommodation[:data][:attributes]).to be_a(Hash)
+    expect(accommodation[:data][:attributes]).to have_key(:name)
+    expect(accommodation[:data][:attributes]).to have_key(:location)
+    expect(accommodation[:data][:attributes]).to have_key(:details)
+  end
 
   it 'can update an existing accommodation with given params' do
     json_response = File.read('spec/fixtures/accommodations/update_accommodation.json')

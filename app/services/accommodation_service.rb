@@ -11,14 +11,14 @@ class AccommodationService < BaseService
     JSON.parse(response.body, symbolize_names: true)
   end
 
-  def self.create_trip_accommodations(trip_id, name, location, details)
+  def self.create_trip_accommodation(trip_id, name, location, details)
     response = conn.post("/api/v1/trips/#{trip_id}/accommodations") do |req|
       req.headers['CONTENT_TYPE'] = 'application/json'
       req.params['name'] = name
       req.params['location'] = location
       req.params['details'] = details
     end
-
+    
     JSON.parse(response.body, symbolize_names: true)
   end
 
