@@ -1,0 +1,9 @@
+{"data":
+  {"id":"1",
+    "type":"accommodation",
+    "attributes":
+    {"name":"Camp 4",
+      "location":"Yosemite Valley",
+      "details":"Pitch your tent behind the large boulder"}
+    }
+  }

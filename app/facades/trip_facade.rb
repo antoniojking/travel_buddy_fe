@@ -9,5 +9,9 @@ class TripFacade
       json = TripService.new_trip(park_code, park_name, user_id)
       Trip.new(json[:data])
     end 
+
+    def update_trip(trip_id, update_info)
+      TripService.patch_trip(trip_id, update_info)
+    end
   end
 end
