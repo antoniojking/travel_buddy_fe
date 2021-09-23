@@ -15,9 +15,24 @@ RSpec.describe 'Trips dashboard page' do
 
     describe "when I visit a trip's dashboard" do
       it 'displays trip attributes' do
-        expect(page).to have_content("Michael's trip 1")
+        expect(page).to have_field(:name, with: "Michael's trip 1")
         expect(page).to have_content('Rocky Mountain National Park')
         expect(page).to have_content('Travel Dates')
+      end
+
+      describe 'it can update trip name' do
+        it 'has form to update trip name' do
+          json_response_1 = File.read('spec/fixtures/trips/dashboard/trip_update_name.json')
+          stub_request(:patch, "https://travel-buddy-api.herokuapp.com/api/v1/trips/6?name=Graduation Trip").to_return(status: 200, body: json_response_1)
+
+          stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/trips/6").to_return(status: 200, body: json_response_1)
+
+
+          fill_in(:name, with:("Graduation Trip"))
+          click_button 'Update Trip Name'
+
+          expect(page).to have_field(:name, with: "Graduation Trip")
+        end
       end
 
       describe 'Travel Dates' do
@@ -87,7 +102,7 @@ RSpec.describe 'Trips dashboard page' do
 
           expect(current_path).to eq(new_trips_dashboard_accommodation_path(6))
         end
-        
+
         it 'lists the trips accommodation records, which link to their show page' do
           json_response = File.read('spec/fixtures/trips/dashboard/trip_accommodation_new.json')
           stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/trips/6").

@@ -1,4 +1,7 @@
-<h1><%= @trip.name %></h1>
+<%= form_with url: trips_dashboard_path(@trip_id), method: :patch, local: true do |f| %>
+  <%= f.text_field :name, value: @trip.name %>
+  <%= f.submit "Update Trip Name" %>
+<% end %>
 
 <h3><%= @trip.park_name %></h3>
 
