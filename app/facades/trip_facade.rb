@@ -12,7 +12,6 @@ class TripFacade
 
     def update_trip(trip_id, update_info)
       json = TripService.patch_trip(trip_id, update_info)
-      Trip.new(json[:data])
     end
   end
 end

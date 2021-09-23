@@ -44,7 +44,7 @@ RSpec.describe TripFacade do
 
         trip = TripFacade.update_trip(6, update_info)
 
-        expect(trip).to be_a Trip
+        expect(trip.status).to eq(200)
       end
     end
   end
