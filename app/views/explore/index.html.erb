@@ -16,10 +16,14 @@
   <% end %>
 </div>
 
+  
+
 <div id="search-results">
   <h2 style="color:black; padding: 15px; background: #ffffff75; background-clip: content-box;">Search Results</h2>
   <div align="center">
-    <% if params[:state] %>
+    <% if @state == [] && @activity == [] %>
+        <p style="text-align:center;">No Search Results to Display</p>
+    <% elsif params[:state] %>
       <% @state.each do |park| %>
         <div class="card" style="width: 18rem;">
           <img src="<%= park.image %>", alt="<%= park.name %> photo", style="max-width: 450px; max-height: 300px" > 
@@ -40,12 +44,11 @@
             <%= link_to park.name,  parks_show_path(park.id) %>
           </div>
         </div>
-      <% end %>
-    <% else %>
-      <p style="text-align:center;">No Search Results to Display</p>
+        <% end %>
     <% end %>
     </div>
   </div>
 </div>
 
+  
 
