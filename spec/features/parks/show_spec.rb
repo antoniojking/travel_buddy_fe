@@ -3,6 +3,16 @@ require 'rails_helper'
 RSpec.describe "Park show page" do
   describe 'information display' do
     it 'displays information about a single park' do
+      weather_json = File.read('spec/fixtures/weather.json')
+      stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/weather?lat=40.3556924&lon=-105.6972879").
+      with(
+        headers: {
+              'Accept'=>'*/*',
+              'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+              'User-Agent'=>'Faraday v1.8.0'
+        }).
+      to_return(status: 200, body: weather_json)
+
       json_response = File.read('spec/fixtures/single_park.json')
       park_code = 'romo'
       stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/parks/#{park_code}").
@@ -23,11 +33,33 @@ RSpec.describe "Park show page" do
       expect(page).to have_content("Directions: Driving from the east: from I-25, take US Hwy 34 or 36")
       expect(page).to have_content("Wednesday: All Day")
       expect(page).to have_content("Saturday: All Day")
-      expect(page).to have_content('States: CO')
+      expect(page).to have_content('States: ["CO"]')
       expect(page).to have_xpath("//img[@src='https://www.nps.gov/common/uploads/structured_data/3C7ECCCF-1DD8-B71B-0B4CB4FB1834BC1D.jpg']")
     end
 
     it 'can create a new trip using button' do
+      weather_json = File.read('spec/fixtures/weather.json')
+      stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/weather?lat=40.3556924&lon=-105.6972879").
+      with(
+        headers: {
+              'Accept'=>'*/*',
+              'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+              'User-Agent'=>'Faraday v1.8.0'
+        }).
+      to_return(status: 200, body: weather_json)
+
+      user_fixture = File.read('spec/fixtures/trips/dashboard/trip_current_user.json')
+      stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/users/3112").
+        to_return(status: 200, body: user_fixture, headers: {})
+
+      user = UserFacade.current_user_info(3112)
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+      friends_response = File.read('spec/fixtures/trips/dashboard/current_user_friends.json')
+      stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/users/3112/friendships").
+        to_return(status: 200, body: friends_response)
+        
       json_response = File.read('spec/fixtures/single_park.json')
       park_code = 'romo'
       stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/parks/#{park_code}").

@@ -13,7 +13,14 @@
 # it.
 #
 require 'simplecov'
-SimpleCov.start 'rails'
+SimpleCov.start 'rails' do 
+  add_filter '/app/channels'
+  add_filter '/app/jobs'
+  add_filter '/app/mailers'
+  add_filter '/app/models'
+  add_filter '/app/controllers/sessions_controller.rb'
+  add_filter '/app/poros/user.rb'
+end
 
 require 'webmock/rspec'
 

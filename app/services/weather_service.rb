@@ -1,7 +1,7 @@
 class WeatherService
   class << self
-    def get_weather(location, days)
-      response = conn.get("weather?location=#{location}&days=#{days}")
+    def get_weather(lat, lon)
+      response = conn.get("weather?lat=#{lat}&lon=#{lon}")
 
       JSON.parse(response.body, symbolize_names: true)
     end

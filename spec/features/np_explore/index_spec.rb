@@ -115,5 +115,9 @@ RSpec.describe 'Explore Page' do
     end
 
     expect(current_path).to eq(explore_index_path)
+
+    within "#search-results" do
+      expect(page).to have_content('No Search Results to Display')
+    end
   end
 end

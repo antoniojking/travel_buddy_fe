@@ -15,6 +15,7 @@ Rails.application.routes.draw do
         resources :checklist_items, only: [:create, :update, :destroy]
       end
       resources :accommodations
+      resources :travel_buddies, only: [:create]
     end
   end
 

@@ -19,8 +19,10 @@ class NationalParkFacade
     def parks_by_activity(activity)
       json = NationalParkService.parks_by_activity(activity)
 
-      json[:data].map do |park|
-        ParkByActivity.new(park)
+      if json == {:message=>"no park has this activity", :status=>"bad request"}
+        []
+      else
+        json[:data].map { |park| ParkByActivity.new(park) }
       end
     end
 

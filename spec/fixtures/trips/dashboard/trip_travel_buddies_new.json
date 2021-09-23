@@ -1,0 +1,44 @@
+{
+    "data": {
+        "id": "6",
+        "type": "trip",
+        "attributes": {
+            "name": "Michael's trip 1",
+            "start_date": null,
+            "end_date": null,
+            "park_code": "romo",
+            "park_name": "Rocky Mountain National Park",
+            "user_id": 7,
+            "checklists": [
+                {
+                    "id": 1,
+                    "trip_id": 6,
+                    "category": "Personal Luggage",
+                    "created_at": "2021-09-20T23:39:01.331Z",
+                    "updated_at": "2021-09-20T23:39:01.331Z"
+                }
+            ],
+            "travel_buddies": [
+                {
+                    "id": 7,
+                    "token": "BQB9_R8YuwpTE3x6rYR2CIsjq3IiS4Nvg_ZYJnobGRbTMRu7vJAl4olDyQEptGlLB8-JLe5w1gfuqXNR9QAw-ofR6omQe_JmrPyAVp_Dv_Udt-jlV7LWB-JQejfGbpERnk8qbzVhpuMrU_9KpdMeHRO7GklUxquECBk10MU2i2QP7uEJjw",
+                    "refresh_token": "AQA3V38dnkXTJurlXvNjyyUvJH5dRv0BvC0keZ6WdGuXRRGuedPwsGM4ZXpR6LW0uoAwlC4Rr47q49SSzp0qK2mCcTL7pDSZNka0lbbrVcuJvo0qKqjFHeYzOlbYcM7FRYc",
+                    "email": "mjabbott10@gmail.com",
+                    "created_at": "2021-09-19T23:29:22.854Z",
+                    "updated_at": "2021-09-20T15:06:36.716Z",
+                    "spotify_id": "p1687axrt0sn03nuuy8plv0m4"
+                },
+                {
+                    "id": 8,
+                    "token": "BQB9_R8YuwpTE3x6rYR2CIsjq3IiS4Nvg_ZYJnobGRbTMRu7vJAl4olDyQEptGlLB8-JLe5w1gfuqXNR9QAw-ofR6omQe_JmrPyAVp_Dv_Udt-jlV7LWB-JQejfGbpERnk8qbzVhpuMrU_9KpdMeHRO7GklUxquECBk10MU2i2QP7uEJjw",
+                    "refresh_token": "AQA3V38dnkXTJurlXvNjyyUvJH5dRv0BvC0keZ6WdGuXRRGuedPwsGM4ZXpR6LW0uoAwlC4Rr47q49SSzp0qK2mCcTL7pDSZNka0lbbrVcuJvo0qKqjFHeYzOlbYcM7FRYc",
+                    "email": "sally@zmial.com",
+                    "created_at": "2021-09-19T23:29:22.854Z",
+                    "updated_at": "2021-09-20T15:06:36.716Z",
+                    "spotify_id": "p1687axrt0sn03nuuy8plv0m4"
+                }
+            ],
+            "accommodations": []
+        }
+    }
+}
