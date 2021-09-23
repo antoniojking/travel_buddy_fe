@@ -14,6 +14,14 @@
 //  *= require_self
 //  *
 
+@import url(‘https://fonts.googleapis.com/css?family=Parisienne%7CQuicksand&display=swap’);
+
+.lead { font-family: 'Quicksand';
+				text-shadow: 4px 4px 5px rgba(0, 0, 0, 0.25) inset;
+				text-align: center;
+				font-size: 50px;
+ }
+ 
 .color_blue {
   color:blueviolet
 }
@@ -22,9 +30,18 @@
   color: black;
 }
 
-
 .login_button {
+  position: static;
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+.login_background {
+  background-image: url('travel-buddy.jpeg');
+  background-color: #cccccc;
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
