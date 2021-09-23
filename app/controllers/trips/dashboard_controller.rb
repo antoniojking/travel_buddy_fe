@@ -2,6 +2,8 @@ class Trips::DashboardController < ApplicationController
   def show
     @trip_id = params[:id]
     @trip = TripFacade.trip_details(@trip_id)
+    # @forecact = WeatherFacade..get_current_weather()
+
   end
 
   def create
