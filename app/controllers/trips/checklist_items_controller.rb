@@ -1,6 +1,6 @@
 class Trips::ChecklistItemsController < ApplicationController
   def create
-    ChecklistItemFacade.new_item(params[:dashboard_id], params[:checklist_id], params[:name], current_user.id.to_i)
+    ChecklistItemFacade.new_item(params[:dashboard_id], params[:checklist_id], params[:name], current_user.id, current_user.email)
     redirect_to "/trips/dashboard/#{params[:dashboard_id]}/checklist/#{params[:checklist_id]}"
   end
   
