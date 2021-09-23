@@ -20,7 +20,6 @@ class TripService
         req.params['start_date'] = update_info[:start_date] unless validate_patch(update_info[:start_date])
         req.params['end_date'] = update_info[:end_date] unless validate_patch(update_info[:end_date])
       end
-      JSON.parse(response.body, symbolize_names: true)
     end
   end
 

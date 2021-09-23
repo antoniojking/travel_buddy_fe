@@ -60,30 +60,13 @@ describe TripService do
     end
 
     it 'can update trip info' do
-      json_response = File.read('spec/fixtures/trips/dashboard/trip_update_name.json')
-      stub_request(:patch, "https://travel-buddy-api.herokuapp.com/api/v1/trips/6?name=Graduation Trip").to_return(status: 200, body: json_response)
+      stub_request(:patch, "https://travel-buddy-api.herokuapp.com/api/v1/trips/6?name=Graduation Trip").to_return(status: 200)
 
       update_info  = {name: "Graduation Trip"}
 
       trip = TripService.patch_trip(6, update_info)
-  
-      expect(trip[:data]).to be_a(Hash)
-      expect(trip[:data]).to have_key(:id)
-      expect(trip[:data]).to have_key(:type)
-      expect(trip[:data]).to have_key(:attributes)
-      expect(trip[:data][:attributes]).to be_a(Hash)
-      expect(trip[:data][:attributes]).to have_key(:name)
-      expect(trip[:data][:attributes]).to have_key(:start_date)
-      expect(trip[:data][:attributes]).to have_key(:end_date)
-      expect(trip[:data][:attributes]).to have_key(:park_code)
-      expect(trip[:data][:attributes]).to have_key(:park_name)
-      expect(trip[:data][:attributes]).to have_key(:user_id)
-      expect(trip[:data][:attributes]).to have_key(:checklists)
-      expect(trip[:data][:attributes][:checklists]).to be_a(Array)
-      expect(trip[:data][:attributes]).to have_key(:travel_buddies)
-      expect(trip[:data][:attributes][:travel_buddies]).to be_a(Array)
-      expect(trip[:data][:attributes]).to have_key(:accommodations)
-      expect(trip[:data][:attributes][:accommodations]).to be_a(Array)
+
+      expect(trip.status).to eq(200)
     end
   end
 end
