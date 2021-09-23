@@ -26,7 +26,7 @@ RSpec.describe "Checklist show page" do
     end
   end
 
-  describe 'features' do
+  xdescribe 'features' do
     before :each do
       @json_response = File.read('spec/fixtures/checklist_show.json')
       @trip_id = 8

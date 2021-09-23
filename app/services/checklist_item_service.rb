@@ -16,7 +16,7 @@ class ChecklistItemService
       response = conn.patch(
         "/api/v1/trips/#{trip_id}/checklists/#{checklist_id}/checklist_items/#{item_id}"
       ) do |req|
-        req.body = item_params
+        req.params = item_params
       end
     end
 
@@ -24,7 +24,7 @@ class ChecklistItemService
       response = conn.delete(
         "/api/v1/trips/#{trip_id}/checklists/#{checklist_id}/checklist_items/#{item_id}"
       ) do |req|
-        req.body = item_id
+        req.params = item_id
       end
     end
   end
