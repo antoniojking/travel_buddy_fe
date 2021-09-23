@@ -19,6 +19,15 @@ RSpec.describe 'Trips dashboard page' do
       stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/trips/6").
         to_return(status: 200, body: json_response)
 
+      park_response = File.read('spec/fixtures/single_park.json')
+      stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/parks/romo").
+          to_return(status: 200, body: park_response)
+
+      
+       stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/weather?lat=1258712&lon=267982348793").
+          to_return(status: 200, body: weather_json)
+    
+
       visit trips_dashboard_path(6)
     end
 
