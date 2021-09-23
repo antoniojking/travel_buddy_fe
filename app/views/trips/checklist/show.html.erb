@@ -3,7 +3,7 @@
 
 <%= form_with url: "/trips/dashboard/#{@trip_id}/checklist/#{@checklist_id}/checklist_items", method: :post, local: true do |f| %>
   <%= f.hidden_field :name, value: "New Item" %>
-  <%= f.submit "Create New Item" %>
+  <%= f.submit "Volunter For A New Item" %>
 <% end %>
 
 <br>
@@ -13,12 +13,10 @@
     <% @checklist.item_list.each do |item| %>
       <li>
         <%= form_with url: "/trips/dashboard/#{@trip_id}/checklist/#{@checklist_id}/checklist_items/#{item.id}", method: :patch, local: true do |f| %>
-          <%= f.text_field :name, value: "#{item.name}" %>
-          <%= f.submit "Edit Name" %> Assigned To: <%= item.user_email %>
+          <%= f.text_field :name, value: "#{item.name}" %> Assigned To: <%= item.user_email %><br>
+          <%= f.submit "Save/Update Item" %>
         <% end %>
-        <%= form_with url: "/trips/dashboard/#{@trip_id}/checklist/#{@checklist_id}/checklist_items/#{item.id}", method: :delete, local: true do |f| %>
-          <%= f.submit "Delete Item" %>
-        <% end %>
+        <%= button_to "Delete Item", url: "/trips/dashboard/#{@trip_id}/checklist/#{@checklist_id}/checklist_items/#{item.id}",  method: :delete %>
       </li>
       <br>
     <% end %>
