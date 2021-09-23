@@ -20,9 +20,15 @@ RSpec.describe "Checklist show page" do
     it 'displays fields with current item names on checklist' do
       expect(page).to have_field(:name, with: 'Cheez-its')
     end
-
+    
     it 'displays user email next to item' do
-      expect(page).to have_content("mattdkragen@gmail.com")
+      expect(page).to have_content("Assigned To: email@gmail.com")
+    end
+
+    it 'displays buttons' do
+      expect(page).to have_button('Volunteer For A New Item')
+      expect(page).to have_button('Update/Save Item')
+      expect(page).to have_button('Remove Item')
     end
   end
 
