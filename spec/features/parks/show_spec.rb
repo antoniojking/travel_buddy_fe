@@ -33,7 +33,7 @@ RSpec.describe "Park show page" do
       expect(page).to have_content("Directions: Driving from the east: from I-25, take US Hwy 34 or 36")
       expect(page).to have_content("Wednesday: All Day")
       expect(page).to have_content("Saturday: All Day")
-      expect(page).to have_content('States: ["CO"]')
+      expect(page).to have_content('States: CO')
       expect(page).to have_xpath("//img[@src='https://www.nps.gov/common/uploads/structured_data/3C7ECCCF-1DD8-B71B-0B4CB4FB1834BC1D.jpg']")
     end
 
