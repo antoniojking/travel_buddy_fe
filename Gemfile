@@ -47,6 +47,7 @@ group :development, :test do
   gem 'orderly'
   gem 'shoulda-matchers'
   gem 'webmock'
+  gem 'travis'
 
 end
 
