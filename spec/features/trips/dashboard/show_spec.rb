@@ -82,6 +82,12 @@ RSpec.describe 'Trips dashboard page' do
           end
         end
 
+        it 'button can link to create new accommodation page' do
+          click_button 'Create'
+
+          expect(current_path).to eq(new_trips_dashboard_accommodation_path(6))
+        end
+        
         it 'lists the trips accommodation records, which link to their show page' do
           json_response = File.read('spec/fixtures/trips/dashboard/trip_accommodation_new.json')
           stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/trips/6").

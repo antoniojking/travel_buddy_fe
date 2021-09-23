@@ -21,7 +21,7 @@
 
 <div id="accommodations">
   <h2>Accommodations</h2>
-  <p><%= button_to 'Create', '#' %></p>
+  <p><%= button_to 'Create', new_trips_dashboard_accommodation_path(@trip_id), method: :get %></p>
   <ol>
     <% @trip.accommodations.each do |accommodation| %>
       <li id="accommodation-<%= accommodation[:id] %>"><%= link_to accommodation[:name], trips_dashboard_accommodation_path(@trip_id, accommodation[:id]) %></li>
