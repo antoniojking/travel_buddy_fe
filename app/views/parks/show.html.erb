@@ -1,7 +1,10 @@
 <h1><%= @park.name %></h1>
-<%= button_to 'Create A Trip To This Park!', trips_dashboard_index_path(:park_name => @park.name, :park_code => params["park_code"]), method: :post%>
+<div align="center">
+  <%= button_to 'Create A Trip To This Park!', trips_dashboard_index_path(:park_name => @park.name, :park_code => params["park_code"]), method: :post%>
+</div>
 
-<p><img src="<%= @park.image %>" alt="Park photo" ></p>
+<div style="padding-left: 30px;">
+<p align="center"><img src="<%= @park.image %>" alt="Park photo" ></p>
 <p>States: <%= @park.state %></p>
 <p>Description: <%= @park.description %></p>
 <p>Phone: <%= @park.phone_number %></p>
@@ -10,3 +13,4 @@
 <% @park.operating_hours.each do |day| %>
   <p><%= day %></p>
 <% end %>
+</div>

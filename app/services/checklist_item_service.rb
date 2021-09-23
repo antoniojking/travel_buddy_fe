@@ -24,7 +24,7 @@ class ChecklistItemService
       response = conn.delete(
         "/api/v1/trips/#{trip_id}/checklists/#{checklist_id}/checklist_items/#{item_id}"
       ) do |req|
-        req.params = item_id
+        req.body = item_id
       end
     end
   end
