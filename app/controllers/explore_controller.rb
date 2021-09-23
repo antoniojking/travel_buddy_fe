@@ -4,6 +4,7 @@ class ExploreController < ApplicationController
       @state = []
     else
       @state = NationalParkFacade.parks_by_state(params[:state])
+      require "pry"; binding.pry
     end
 
     if params[:activity].blank?
