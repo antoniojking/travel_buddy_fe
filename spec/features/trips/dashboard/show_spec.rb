@@ -203,9 +203,6 @@ RSpec.describe 'Trips dashboard page' do
             # expect(page).to have_button()
           end
         end
-
-        xit 'has a form to invite friends to join the trip' do
-        end
       end
 
       # describe 'Chat' do
