@@ -14,7 +14,7 @@
       <li>
         <%= form_with url: "/trips/dashboard/#{@trip_id}/checklist/#{@checklist_id}/checklist_items/#{item.id}", method: :patch, local: true do |f| %>
           <%= f.text_field :name, value: "#{item.name}" %>
-          <%= f.submit "Edit Name" %>
+          <%= f.submit "Edit Name" %> Assigned To: <%= item.user_email %>
         <% end %>
         <%= form_with url: "/trips/dashboard/#{@trip_id}/checklist/#{@checklist_id}/checklist_items/#{item.id}", method: :delete, local: true do |f| %>
           <%= f.submit "Delete Item" %>

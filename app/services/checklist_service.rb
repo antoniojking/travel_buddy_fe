@@ -15,7 +15,7 @@ class ChecklistService
     def single_checklist(trip_id, checklist_id)
       response = conn.get("/api/v1/trips/#{trip_id}/checklists/#{checklist_id}")
 
-      JSON.parse(response.body, symbolize_names: true)
+      parsed = JSON.parse(response.body, symbolize_names: true)
     end
   end
 

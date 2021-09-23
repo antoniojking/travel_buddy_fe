@@ -1,11 +1,12 @@
 class ChecklistItemService
   class << self
-    def new_item(trip_id, checklist_id, item_name, user_id)
+    def new_item(trip_id, checklist_id, item_name, user_id, user_email)
       response = conn.post(
          "/api/v1/trips/#{trip_id}/checklists/#{checklist_id}/checklist_items"
       ) do |req|
         req.params['name'] = item_name
         req.params['user_id'] = user_id
+        req.params['user_email'] = user_email
       end
     end
     
