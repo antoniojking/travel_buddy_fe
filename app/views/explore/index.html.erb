@@ -1,4 +1,5 @@
-<h1 style="text-align:center;">Find Your Next Destination</h1>
+<div class="login_background", style="padding-top: 100px; background-attachment: fixed;">
+<h1 style="color:black; padding: 15px; background: #ffffff75; background-clip: content-box;">Find Your Next Destination</h1>
 <br>
 
 <div id="state-search" align="center" class="mb-3">
@@ -16,24 +17,32 @@
 </div>
 
 <div id="search-results">
-  <h2 style="text-align:center;">Search Results</h2>
-
-  <% if params[:state] %>
-    <% @state.each do |park| %>
-    <p style="text-align:center;">
-      <%= link_to park.name,  parks_show_path(park.id) %>
-      <br>
-      <img src="<%= park.image %>", alt="<%= park.name %> photo", style="max-width: 450px; max-height: 300px" >
-    </p>
+  <h2 style="color:black; padding: 15px; background: #ffffff75; background-clip: content-box;">Search Results</h2>
+  <div align="center">
+    <% if params[:state] %>
+      <% @state.each do |park| %>
+        <div class="card" style="width: 18rem;">
+          <img src="<%= park.image %>", alt="<%= park.name %> photo", style="max-width: 450px; max-height: 300px" > 
+          <div class="card-body">
+            <h5 class="card-title"><%= park.name%></h5>
+            <%= link_to park.name,  parks_show_path(park.id) %>
+          </div>
+        </div>
+        <br>
+        <br>
+      <% end %>
+    <% elsif params[:activity] %>
+        <% @activity.each do |park| %>
+        <div class="card" style="width: 18rem;">
+          <img src="#", alt="<%= park.name %> photo", style="max-width: 450px; max-height: 300px" > 
+          <div class="card-body">
+            <h5 class="card-title"><%= park.name%></h5>
+            <%= link_to park.name,  parks_show_path(park.id) %>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <p style="text-align:center;">No Search Results to Display</p>
     <% end %>
-  <% elsif params[:activity] %>
-    <% @activity.each do |park| %>
-    <p style="text-align:center;">
-      <%= link_to park.name, parks_show_path(park.id) %>
-      <br>
-      <img src="#", alt="<%= park.name %> photo", style="max-width: 450px; max-height: 300px" >
-    </p>
-    <% end %>
-  <% else %>
-    <p style="text-align:center;">No Search Results to Display</p>
-  <% end %>
+    </div>
+  </div>

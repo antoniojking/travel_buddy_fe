@@ -36,7 +36,7 @@
   color: black;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h5{
   font-family: 'Quicksand';
 	text-align: center;
 }
@@ -55,4 +55,6 @@ h1, h2, h3 {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
+      overflow: scroll;
 }
