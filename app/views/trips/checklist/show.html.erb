@@ -1,6 +1,13 @@
 <h1>Category: <%= @checklist.category %></h1>
 <hr><br>
 
+<%= form_with url: "/trips/dashboard/#{@trip_id}/checklist/#{@checklist_id}/checklist_items", method: :post, local: true do |f| %>
+  <%= f.hidden_field :name, value: "New Item" %>
+  <%= f.submit "Create New Item" %>
+<% end %>
+
+<br>
+
 <section id="items">
   <ol>
     <% @checklist.item_list.each do |item| %>

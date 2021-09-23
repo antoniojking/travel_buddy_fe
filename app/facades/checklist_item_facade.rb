@@ -1,5 +1,9 @@
 class ChecklistItemFacade
   class << self
+    def new_item(trip_id, checklist_id, item_name, user_id)
+      ChecklistItemService.new_item(trip_id, checklist_id, item_name, user_id)
+    end
+    
     def edit_item(trip_id, checklist_id, item_id, item_name)
       ChecklistItemService.edit_item(trip_id, checklist_id, item_id, item_name)
     end

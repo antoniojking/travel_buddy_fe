@@ -1,0 +1,21 @@
+{
+  "data": {
+    "id": "2",
+    "type": "checklist",
+    "attributes": {
+      "category": "Snacks",
+      "trip_id": 8,
+      "item_count": 3,
+      "items": [
+        {
+          "id": 1,
+          "checklist_id": 2,
+          "user_id": 4,
+          "name": "New Item",
+          "created_at": "2021-09-21T22:55:38.233Z",
+          "updated_at": "2021-09-21T22:55:38.233Z"
+        }
+      ]
+    }
+  }
+}
