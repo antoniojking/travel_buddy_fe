@@ -14,7 +14,6 @@ Rails.application.routes.draw do
       resources :checklist, only: [:show, :create] do
         resources :checklist_items, only: [:update, :destroy]
       end
-
       resources :accommodations
     end
   end
