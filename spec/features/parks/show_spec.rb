@@ -28,6 +28,18 @@ RSpec.describe "Park show page" do
     end
 
     it 'can create a new trip using button' do
+      user_fixture = File.read('spec/fixtures/trips/dashboard/trip_current_user.json')
+      stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/users/3112").
+        to_return(status: 200, body: user_fixture, headers: {})
+
+      user = UserFacade.current_user_info(3112)
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+      friends_response = File.read('spec/fixtures/trips/dashboard/current_user_friends.json')
+      stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/users/3112/friendships").
+        to_return(status: 200, body: friends_response)
+        
       json_response = File.read('spec/fixtures/single_park.json')
       park_code = 'romo'
       stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/parks/#{park_code}").
