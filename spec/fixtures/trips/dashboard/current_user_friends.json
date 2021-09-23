@@ -1,0 +1,11 @@
+{"data":
+  [{"id":65,
+    "type":"User Email",
+    "attributes":
+    {"email":"john@zmail.com"}},
+    {"id":66,
+      "type":"User Email",
+      "attributes":
+      {"email":"sally@zmial.com"}}
+    ]
+  }

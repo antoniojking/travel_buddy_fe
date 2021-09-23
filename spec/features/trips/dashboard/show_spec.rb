@@ -2,13 +2,22 @@ require 'rails_helper'
 
 RSpec.describe 'Trips dashboard page' do
   describe 'as an authenticated user' do
-    # before do
-    #   allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-    # end
     before :each do
+      user_fixture = File.read('spec/fixtures/trips/dashboard/trip_current_user.json')
+      stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/users/3112").
+        to_return(status: 200, body: user_fixture, headers: {})
+
+      user = UserFacade.current_user_info(3112)
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+      friends_response = File.read('spec/fixtures/trips/dashboard/current_user_friends.json')
+      stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/users/3112/friendships").
+        to_return(status: 200, body: friends_response)
+
       json_response = File.read('spec/fixtures/trips/dashboard/trip_new.json')
       stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/trips/6").
-      to_return(status: 200, body: json_response)
+        to_return(status: 200, body: json_response)
 
       visit trips_dashboard_path(6)
     end
@@ -127,13 +136,9 @@ RSpec.describe 'Trips dashboard page' do
 
       describe 'Trip Checklists' do
         it 'displays a trip checklists section' do
-
           within "#checklists" do
             expect(page).to have_content('Trip Checklist(s)')
             expect(page).not_to have_selector("#checklist-1")
-              # within "#checklist-1" do
-              #   expect(page).to have_link('Blue Plate Grill')
-              # end
           end
         end
 
@@ -194,55 +199,39 @@ RSpec.describe 'Trips dashboard page' do
         end
       end
 
-      describe 'Joining Freinds' do
-        it 'displays a friends joining section' do
-          within "#friends_joining" do
-            expect(page).to have_content('Friends Joining')
-            # expect(page).to have_content()
-            # expect(page).to have_field()
-            # expect(page).to have_button()
+      describe 'Travel Buddies' do
+        it 'displays a Travel Buddies section, with a form to add Travel Buddies' do
+          within "#travel-buddies" do
+            expect(page).to have_content('Travel Buddies')
+            expect(page).to have_field(:friend_id)
+            expect(page).to have_button('Add a Travel Buddy')
           end
         end
 
-        xit 'has a form to invite friends to join the trip' do
+        it 'displays added Travel Buddies in the curent travel buddies section' do
+          within "#current-travel-buddies" do
+            expect(page).to have_content('mjabbott10@gmail.com')
+            expect(page).to_not have_content('sally@zmial.com')
+          end
+
+          stub_request(:post, "https://travel-buddy-api.herokuapp.com/api/v1/trips/6/travel_buddies?trip_id=6&user_id=66").
+            to_return(status: 200)
+
+          json_response = File.read('spec/fixtures/trips/dashboard/trip_travel_buddies_new.json')
+          stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/trips/6").
+            to_return(status: 200, body: json_response)
+
+          within "#travel-buddies" do
+            select "sally@zmial.com", :from => :friend_id
+            click_button 'Add a Travel Buddy'
+          end
+
+          within "#current-travel-buddies" do
+            expect(page).to have_content('mjabbott10@gmail.com')
+            expect(page).to have_content('sally@zmial.com')
+          end
         end
       end
-
-      # describe 'Chat' do
-      #   xit 'displays a message board section' do
-      #     author1 = 'antonio.j.king@gmail.com'
-      #     author2 = 'elliotolbright@gmail.com'
-      #     message1 = "Who is picking up Matt from the Airport?"
-      #     message2 = "Not me"
-      #
-      #     within "#chat" do
-      #       expect(page).to have_content('Message Board/Chat')
-      #       expect(page).to have_content(author1)
-      #       expect(page).to have_content(message1)
-      #       expect(page).to have_content(author2)
-      #       expect(page).to have_content(message2)
-      #       # expect(page).to have_field()
-      #       # expect(page).to have_button()
-      #     end
-      #   end
-      #
-      #   xit 'has to a form to add a message to the chat feed' do
-      #   end
-      # end
-
-      # describe 'Activites' do
-      #   xit 'displays an activities section' do
-      #     within "#activities" do
-      #       expect(page).to have_content('Activities')
-      #       # expect(page).to have_content()
-      #       # expect(page).to have_field()
-      #       expect(page).to have_button('Edit')
-      #     end
-      #   end
-      #
-      #   it 'has a form to add an activity'
-      #   it 'has a button to edit detail of an existing activity'
-      # end
     end
   end
 end

@@ -1,6 +1,7 @@
 class Trips::DashboardController < ApplicationController
   def show
     @trip_id = params[:id]
+    @friends = FriendshipFacade.create_user_friends(current_user.id.to_i)
     @trip = TripFacade.trip_details(@trip_id)
   end
 
