@@ -20,9 +20,10 @@
 
 <div id="weather">
   <h2>Weather Forecast</h2>
-  <%= @weather.current_conditions %>
-  <%= @weather.min_temp %>
-  <%= @weather.max_temp %>
+  <p>Current Conditions: <%= @weather.current_conditions %></p>
+  <p>Current Temp: <%= @weather.current_temp %></p>
+  <p>Max Temperature: <%= @weather.min_temp %></p>
+  <p>Min Temperature: <%= @weather.min_temp %></p>
 </div>
 
 <div id="accommodations">

@@ -15,7 +15,6 @@ class Trips::DashboardController < ApplicationController
   end
 
   def update
-    # require "pry";binding.pry
     update_info = params
     TripFacade.update_trip(params[:id], update_info)
     redirect_to trips_dashboard_path(params[:id])
