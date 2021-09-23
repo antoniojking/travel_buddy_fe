@@ -1,10 +1,15 @@
-<figure class="text-center">
-  <blockquote class="blockquote">
-    <h3 class="display-5">Welcome Page/ Login Page</h3>
-  </blockquote>
-</figure>
 
-<button type="button" onclick="location.href='/auth/spotify'" class="btn btn-outline-success login_button">
-  <%= image_tag('spotify.svg', "data-svg-fallback" => image_path('/app/assets/images/spotify.svg'), :align=> "left") %>
-  Sign in with Spotify
-</button>
+<div class="login_background", style="padding-top: 100px;">
+  <figure class="text-center">
+    <blockquote class="blockquote">
+    
+
+      <h3 class="display-5 lead" style="color:black; padding: 15px; background: #ffffff75; background-clip: content-box;">Welcome To Travel Buddies</h3>
+    </blockquote>
+  </figure>
+
+  <button type="button" onclick="location.href='/auth/spotify'" class="btn btn-outline-success login_button custom">
+    <%= image_tag('spotify.svg', "data-svg-fallback" => image_path('/app/assets/images/spotify.svg')) %>
+    Sign in with Spotify
+  </button>
+</div>

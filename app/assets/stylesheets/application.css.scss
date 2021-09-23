@@ -14,17 +14,47 @@
 //  *= require_self
 //  *
 
-.color_blue {
-  color:blueviolet
+@import url('https://fonts.googleapis.com/css?family=Parisienne|Quicksand&display=swap');
+
+.lead { font-family: 'Quicksand';
+				text-shadow: 4px 4px 5px rgba(0, 0, 0, 0.25) inset;
+				text-align: center;
+				font-size: 50px;
+ }
+ 
+
+.navbar-custom {
+	background-color: #ffffff75;
 }
+
+.custom {
+	background-color: #9cff9d8f;
+}
+
 
 .black-text {
   color: black;
 }
 
+h1, h2, h3, h5{
+  font-family: 'Quicksand';
+	text-align: center;
+}
 
 .login_button {
+  position: static;
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+.login_background {
+  background-image: url('travel-buddy.jpeg');
+  background-color: #cccccc;
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+      overflow: scroll;
 }
