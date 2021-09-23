@@ -6,7 +6,9 @@ class Park
               :directions,
               :hours,
               :state,
-              :image
+              :image,
+              :lat,
+              :lon
 
   def initialize(info)
     @id           = info[:id]
@@ -17,6 +19,9 @@ class Park
     @hours        = info[:attributes][:operating_hours][0][:standardHours]
     @state        = info[:attributes][:states]
     @image        = info[:attributes][:images][0][:url]
+    @lat          = info[:attributes][:lat]
+    @lon          = info[:attributes][:lon]
+    
   end
 
   def operating_hours

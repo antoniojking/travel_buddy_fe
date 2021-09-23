@@ -2,6 +2,9 @@ class Trips::DashboardController < ApplicationController
   def show
     @trip_id = params[:id]
     @trip = TripFacade.trip_details(@trip_id)
+    @park =  @park = NationalParkFacade.park_by_code(@trip.park_code)
+    @weather = WeatherFacade.get_current_weather(@park.lat, @park.lon)
+    require "pry"; binding.pry
     # @forecact = WeatherFacade..get_current_weather()
 
   end
