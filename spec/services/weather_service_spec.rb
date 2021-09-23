@@ -4,13 +4,13 @@ RSpec.describe 'checklist service' do
   it 'returns weather for given amount of days' do
     json_response = File.read('spec/fixtures/weather.json')
 
-    stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/weather?days=267982348793&location=1258712").
-         with(
-           headers: {
-          'Accept'=>'*/*',
-          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-          'User-Agent'=>'Faraday v1.8.0'
-           }).
+    stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/weather?lat=1258712&lon=267982348793").
+    with(
+      headers: {
+     'Accept'=>'*/*',
+     'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+     'User-Agent'=>'Faraday v1.8.0'
+      }).
        
 
     to_return(status: 200, body: json_response)

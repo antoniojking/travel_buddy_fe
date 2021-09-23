@@ -3,18 +3,15 @@ require 'rails_helper'
 RSpec.describe WeatherFacade do
   describe 'class methods' do 
     it '::get_current_weather' do 
-      json_response = File.read('spec/fixtures/weather.json')
-
-      stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/weather?days=1258712&location=267982348793").
+      weather_json = File.read('spec/fixtures/weather.json')
+      stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/weather?lat=267982348793&lon=1258712").
       with(
         headers: {
        'Accept'=>'*/*',
        'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
        'User-Agent'=>'Faraday v1.8.0'
         }).
-         
-  
-      to_return(status: 200, body: json_response)
+      to_return(status: 200, body: weather_json)
 
       forecast = WeatherFacade.get_current_weather(267982348793, 1258712)
 
