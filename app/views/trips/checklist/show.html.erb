@@ -1,19 +1,23 @@
-<h1>Category: <%= @checklist.category %></h1>
+<center>
+  <h1>Category: <%= @checklist.category %></h1>
+</center>
 <hr><br>
 
-<%= form_with url: "/trips/dashboard/#{@trip_id}/checklist/#{@checklist_id}/checklist_items", method: :post, local: true do |f| %>
-  <%= f.hidden_field :name, value: "New Item" %>
-  <%= f.submit "Volunteer For A New Item" %>
-<% end %>
+<div style="padding-left: 50px; padding-bottom: 10px;">
+  <%= form_with url: "/trips/dashboard/#{@trip_id}/checklist/#{@checklist_id}/checklist_items", method: :post, local: true do |f| %>
+    <%= f.hidden_field :name, value: "New Item" %>
+    <%= f.submit "Volunteer For A New Item" %>
+  <% end %>
+</div>
 
 <br>
 
 <section id="items">
-  <ol>
+  <ol style="padding-left: 50px;">
     <% @checklist.item_list.each do |item| %>
       <li>
         <%= form_with url: "/trips/dashboard/#{@trip_id}/checklist/#{@checklist_id}/checklist_items/#{item.id}", method: :patch, local: true do |f| %>
-          <%= f.text_field :name, value: "#{item.name}" %> Assigned To: <%= item.user_email %><br>
+          <%= f.text_field :name, value: "#{item.name}" %><br>Assigned To: <%= item.user_email %><br>
           <%= f.submit "Update/Save Item" %>
         <% end %>
         <%= form_with url: "/trips/dashboard/#{@trip_id}/checklist/#{@checklist_id}/checklist_items/#{item.id}", method: :delete, local: true do |f| %>
