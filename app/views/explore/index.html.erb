@@ -18,7 +18,9 @@
 <div id="search-results">
   <h2 style="text-align:center;">Search Results</h2>
 
-  <% if params[:state] %>
+  <% if @state == [] && @activity == [] %>
+      <p style="text-align:center;">No Search Results to Display</p>
+  <% elsif params[:state] %>
     <% @state.each do |park| %>
     <p style="text-align:center;">
       <%= link_to park.name,  parks_show_path(park.id) %>
@@ -34,6 +36,4 @@
       <img src="#", alt="<%= park.name %> photo", style="max-width: 450px; max-height: 300px" >
     </p>
     <% end %>
-  <% else %>
-    <p style="text-align:center;">No Search Results to Display</p>
   <% end %>
