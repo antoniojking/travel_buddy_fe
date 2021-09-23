@@ -45,6 +45,16 @@
   </ol
 </div>
 
-<div id="friends_joining">
-  <h2>Friends Joining</h2>
+<div id="travel-buddies">
+  <h2>Travel Buddies</h2>
+  <%= form_with url: trips_dashboard_travel_buddies_path(@trip.id), method: :post, local: true  do |f| %>
+    <%= f.collection_select :friend_id, @friends, :id, :email %>
+    <%= f.submit "Add a Travel Buddy" %>
+  <% end %>
+
+  <ol id="current-travel-buddies">
+    <% @trip.travel_buddies.each_with_index do |buddy, index| %>
+      <li id="travel-buddy-<%= index += 1 %>"><%= buddy[:email] %></li>
+    <% end %>
+  </ol
 </div>
