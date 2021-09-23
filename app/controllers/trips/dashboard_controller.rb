@@ -1,9 +1,10 @@
 class Trips::DashboardController < ApplicationController
   def show
     @trip_id = params[:id]
+    @friends = FriendshipFacade.create_user_friends(current_user.id.to_i)
     @trip = TripFacade.trip_details(@trip_id)
   end
-  
+
   def create
     park_code = params[:park_code]
     user_id = session[:user_id]
@@ -11,7 +12,7 @@ class Trips::DashboardController < ApplicationController
     @trip = TripFacade.new_trip(park_code, park_name, user_id)
     redirect_to trips_dashboard_path(@trip.id)
   end
-  
+
   def update
     update_info = params
     TripFacade.update_trip(params[:id], update_info)
