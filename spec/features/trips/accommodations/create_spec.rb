@@ -2,6 +2,21 @@ require 'rails_helper'
 
 RSpec.describe 'accommodation new page' do
   before :each do
+    weather_json = File.read('spec/fixtures/weather.json')
+    stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/weather?lat=40.3556924&lon=-105.6972879").
+    with(
+      headers: {
+            'Accept'=>'*/*',
+            'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+            'User-Agent'=>'Faraday v1.8.0'
+      }).
+    to_return(status: 200, body: weather_json)
+
+    
+    park_response = File.read('spec/fixtures/single_park.json')
+    stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/parks/romo").
+        to_return(status: 200, body: park_response)
+
     user_fixture = File.read('spec/fixtures/trips/dashboard/trip_current_user.json')
     stub_request(:get, "https://travel-buddy-api.herokuapp.com/api/v1/users/3112").
       to_return(status: 200, body: user_fixture, headers: {})
