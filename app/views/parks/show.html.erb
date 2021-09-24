@@ -1,12 +1,12 @@
-<h1><%= @park.name %></h1>
-<%= button_to 'Create A Trip To This Park!', trips_dashboard_index_path(:park_name => @park.name, :park_code => params["park_code"]), method: :post%>
+    <h1><%= @park.name %></h1>
+    <%= button_to 'Create A Trip To This Park!', trips_dashboard_index_path(:park_name => @park.name, :park_code => params["park_code"]), method: :post%>
 
-<p><img src="<%= @park.image %>" alt="Park photo" ></p>
-<p>States: <%= @park.state %></p>
-<p>Description: <%= @park.description %></p>
-<p>Phone: <%= @park.phone_number %></p>
-<p>Directions: <%= @park.directions %></p>
-<p>Hours:</p>
-<% @park.operating_hours.each do |day| %>
-  <p><%= day %></p>
-<% end %>
+    <p><img src="<%= @park.image %>" alt="Park photo" ></p>
+    <p>States: <%= @park.state %></p>
+    <p>Description: <%= @park.description %></p>
+    <p>Phone: <%= @park.phone_number %></p>
+    <p>Directions: <%= @park.directions %></p>
+    <p>Hours:</p>
+    <% @park.operating_hours.each do |day| %>
+    <p><%= day %></p>
+    <% end %>
