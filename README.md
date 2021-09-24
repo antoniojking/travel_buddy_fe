@@ -20,8 +20,7 @@
 
 - [Overview](#overview)
 - [Tools Utilized](#tools-used)
-- [Pages](#pages)
-    - [Login Page](#login)
+- [Project Configurations](#project-configurations)
 - [Contributing](#contributors)
 
 # README
@@ -29,7 +28,7 @@
 
 ### <ins>Overview</ins>
 
-[Travel Buddy](https://github.com/antoniojking/travel_buddy_fe) is a 10 day, 6 person project. The idea was to build a web application that allows users to connect and plan trips to national parks. 
+[Travel Buddy](https://github.com/antoniojking/travel_buddy_fe) is a 10 day, 6 person project. The idea was to build a web application that allows users to connect and plan trips to national parks.
 
 - Apply principles of flow control across multiple methods
 - Design a one to many relationship using an API backend application
@@ -40,8 +39,6 @@
 - Use Rails to allow users to connect with other users
 - Create instance and class methods on a Rails model
 - Write model and feature tests that fully cover data logic and potential user behavior
-
-[Technical Requirements](https://github.com/turingschool-examples/little-esty-shop/blob/main/doc/user_stories.md)
 
 ### <ins>Tools Used</ins>
 - Ruby 2.7.2
@@ -64,11 +61,46 @@
 - API
 - RuboCop
 
-### <ins>Pages</ins>
+### Project Configurations
 
-#### Login
-- Implement Spotify Oauth for users to login and store their data
+* Ruby version
+    ```bash
+    $ ruby -v
+    ruby 2.7.2p137 (2020-10-01 revision 5445e04352) [x86_64-darwin20]
+    ```
 
+* [System dependencies](https://github.com/antoniojking/travel_buddy_fe/blob/main/Gemfile)
+    ```bash
+    $ rails -v
+    Rails 5.2.6
+    ```
+
+* Database creation
+    ```bash
+    $ rails db:{drop,create,migrate,seed}
+    Created database 'travel_buddy_fe'
+    Created database 'travel_buddy_fe'
+    ```
+
+* How to run the test suite
+    ```bash
+    $ bundle exec rspec
+    ```
+
+* [Local Deployment](http://localhost:3000), for testing:
+    ```bash
+    $ rails s
+    => Booting Puma
+    => Rails 5.2.6 application starting in development
+    => Run `rails server -h` for more startup options
+    Puma starting in single mode...
+    * Version 3.12.6 (ruby 2.7.2-p137), codename: Llamas in Pajamas
+    * Min threads: 5, max threads: 5
+    * Environment: development
+    * Listening on tcp://localhost:3000
+    Use Ctrl-C to stop
+
+    ```
 
 ### <ins>Contributors</ins>
 
@@ -97,8 +129,6 @@
 - LinkedIn: [Matt Toensing](https://www.linkedin.com/in/matt-toensing/)
 
 
-
-
 <!-- MARKDOWN LINKS & IMAGES -->
 
 [contributors-shield]: https://img.shields.io/github/contributors/antoniojking/travel_buddy_fe.svg?style=flat-square
@@ -110,108 +140,3 @@
 [issues-shield]: https://img.shields.io/github/issues/antoniojking/travel_buddy_fe.svg?style=flat-square
 [issues-url]: https://github.com/antoniojking/travel_buddy_fe/issues
 <!--
-
-
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ... -->
-
-
-# Travel buddy
-
-## Background and Description
-
-"Travel Buddy" brings planning, communication and memories together in one place between multiple people..
-
-## Requirements
-- must use Rails 5.2.x
-- must use PostgreSQL
-- all code must be tested via feature tests and model tests, respectively
-- must use GitHub branching, team code reviews via GitHub comments, and github projects to track progress on user stories
-- must include a thorough README to describe the project
-- must deploy completed code to Heroku
-
-## Setup
-
-This project requires Ruby 2.7.2.
-
-* Fork this repository
-* Clone your fork
-* From the command line, install gems and set up your DB:
-    * `bundle`
-    * `rails db:create`
-* Run the test suite with `bundle exec rspec`.
-* Run your development server with `rails s` to see the app in action.
-
-## Phases
-
-1. [Database Setup](./doc/db_setup.md)
-1. [User Stories](./doc/user_stories.md)
-1. [Extensions](./doc/extensions.md)
-1. [Evaluation](./doc/evaluation.md)
-
-
-
-#### Project Configurations
-
-* Ruby version
-    ```bash
-    $ ruby -v
-    ruby 2.7.2p137 (2020-10-01 revision 5445e04352) [x86_64-darwin20]
-    ```
-
-* [System dependencies](https://github.com/antoniojking/travel_buddy_fe/blob/main/Gemfile)
-    ```bash
-    $ rails -v
-    Rails 5.2.6
-    ```
-
-* Database creation
-    ```bash
-    $ rails db:{drop,create,migrate,seed}
-    Created database 'little_esty_shop_development'
-    Created database 'little_esty_shop_test'
-    ```
-
-* How to run the test suite
-    ```bash
-    $ bundle exec rspec
-    ```
-
-* [Local Deployment](http://localhost:3000), for testing:
-    ```bash
-    $ rails s
-    => Booting Puma
-    => Rails 5.2.6 application starting in development
-    => Run `rails server -h` for more startup options
-    Puma starting in single mode...
-    * Version 3.12.6 (ruby 2.7.2-p137), codename: Llamas in Pajamas
-    * Min threads: 5, max threads: 5
-    * Environment: development
-    * Listening on tcp://localhost:3000
-    Use Ctrl-C to stop
-
-    ```
-
-* [Heroku Deployment](https://agile-ravine-84109.herokuapp.com/), for production
